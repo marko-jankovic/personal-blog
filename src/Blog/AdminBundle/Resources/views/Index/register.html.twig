@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    {% include 'BlogAdminBundle:Index:register-signin-header.html.twig' %}
+{% endblock %}
+
+{% block container %}
+
+    <form id="login-form" name="login" method="post">
+        <h2>Register</h2>
+        <fieldset>
+            <label for="username">Username *</label>
+            <input type="text" placeholder="Username" name="usernamee" id="username"/>
+        </fieldset>
+
+        <fieldset>
+            <label for="email">Email Address *</label>
+            <input type="email" placeholder="Email Address" name="email" id="email" />
+        </fieldset>
+
+        <fieldset>
+            <label for="password">Password (6 characters minimum) *</label>
+            <input type="password" placeholder="Password" name="password" id="password" />
+        </fieldset>
+
+        <fieldset>
+            <label for="confirm-password">Confirm Password *</label>
+            <input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password"/>
+        </fieldset>
+
+        <button type="submit">Register</button>
+    </form>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

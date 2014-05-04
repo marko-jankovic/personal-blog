@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+
+{% block header %}
+    <div id="header" class="register-signin-header">
+        <a class="signout" href="{{ path('admin_login') }}">Sign Out</a>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <div id="navigation">
+        <h1>Settings</h1>
+        <ul>
+            <li>
+                <a href="">
+                    General
+                </a>
+            </li>
+            <li>
+                <a href="{{path('admin_users')}}" {% if app.request.get('_route') == 'admin_users' %} class="active"{% endif %}>
+                    Users
+                </a>
+            </li>
+            <li><a href="">New Post</a></li>
+            <li><a href="">All Posts</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+    {% include [
+        'BlogAdminBundle:Index:settings/'~ actionName ~ '.html.twig',
+        'BlogAdminBundle:Index:default.html.twig']
+        ignore missing
+    %}
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

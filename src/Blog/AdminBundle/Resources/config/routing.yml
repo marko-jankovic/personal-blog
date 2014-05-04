@@ -1,0 +1,32 @@
+admin_homepage:
+    pattern:  /index
+    defaults: { _controller: BlogAdminBundle:Index:index }
+
+admin_login:
+    pattern:  /login
+    defaults: { _controller: BlogAdminBundle:Index:login }
+
+admin_register:
+    pattern:  /register
+    defaults: { _controller: BlogAdminBundle:Index:register }
+
+admin_forgot:
+    pattern:  /forgot
+    defaults: { _controller: BlogAdminBundle:Index:forgot }
+
+
+admin_setting:
+    pattern:  /settings
+    defaults: { _controller: BlogAdminBundle:Settings:index }
+
+admin_users:
+    pattern:  /settings/users
+    defaults: { _controller: BlogAdminBundle:Settings:users }
+
+admin_user_edit:
+    pattern:  /settings/user/edit/{id}
+    defaults: { _controller: BlogAdminBundle:Settings:edit }
+
+admin_user_delete:
+  pattern:  /settings/user/delete/{id}
+  defaults: { _controller: BlogAdminBundle:Settings:delete }
