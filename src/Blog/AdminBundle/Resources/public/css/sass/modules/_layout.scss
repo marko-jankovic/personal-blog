@@ -37,6 +37,10 @@ a {
     -moz-box-shadow:    0 1px 5px #ccc;
     -webkit-box-shadow: 0 1px 5px #ccc;
     box-shadow:         0 1px 5px #ccc;
+
+    .no-margin {
+      margin: 0;
+    }
 }
 
 .register,

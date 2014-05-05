@@ -3,15 +3,22 @@
 namespace Blog\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class SettingsController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-            array('actionName' => 'index')
-        );
+        if ($request->getSession()->has('login'))
+        {
+            return $this->render(
+                        'BlogAdminBundle:Index:index.html.twig',
+                            array('actionName' => 'index')
+            );
+        }
+        else {
+            return $this->redirect($this->generateUrl('admin_login'));
+        }
     }
 
 
@@ -34,9 +41,16 @@ class SettingsController extends Controller
 
         $user = $this->getDoctrine()
                      ->getRepository('BlogAdminBundle:User')
-                     ->findBy(array('id' => $id));
+                     ->findOneBy(array('id' => $id));
 
-        var_dump($user); die();
+
+        return $this->render(
+            'BlogAdminBundle:Index:index.html.twig',
+                array(
+                    'actionName' => 'user',
+                    'user'      => $user
+                )
+        );
     }
 
     public function deleteAction($id)

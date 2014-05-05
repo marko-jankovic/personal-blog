@@ -49,19 +49,49 @@ class IndexController extends Controller
         );
     }
 
+    public function signOutAction(Request $request) {
+        $session = $request->getSession();
+        $session->clear();
+
+        return $this->redirect($this->generateUrl('admin_login'));
+    }
+
     public function loginAction(Request $request)
     {
-
-        $user = $this->getDoctrine()
-                     ->getRepository('BlogAdminBundle:User')
-                     ->find(1);
-
-
-        $form = $this->createForm(new LoginType(), $user);
-
+        $form = $this->createForm(new LoginType());
         $form->handleRequest($request);
+        $session = $request->getSession();
 
-        if($form->isValid()) {
+        $errorMessage = "";
+
+        if($form->isValid() && $request->getMethod() == "POST")
+        {
+            $formData = $form->getData();
+            $session->clear();
+
+            $user = $this->getDoctrine()
+                         ->getRepository('BlogAdminBundle:User')
+                         ->findOneBy(array(
+                            'email' => $formData['email'],
+                            'password' => $formData['password']
+                        ));
+
+            if($user)
+            {
+                if($formData['keep_me'])
+                {
+                    $session->set('login', $user);
+                }
+
+                return $this->redirect($this->generateUrl('admin_setting'));
+            }
+            else {
+                $errorMessage = "Invalid Email Address or Password ";
+            }
+        }
+
+        if($session->has('login'))
+        {
             return $this->redirect($this->generateUrl('admin_setting'));
         }
 
@@ -70,7 +100,7 @@ class IndexController extends Controller
             array(
                 'actionName' => 'login',
                 'form' => $form->createView(),
-                'user' => $user
+                'errorMessage' => $errorMessage
             )
         );
     }

@@ -7,9 +7,15 @@
 {% block container %}
 
 <form id="login-form" name="login" method="post">
-    <h2>Sign In</h2>
+    <h2 {% if errorMessage %}class="no-margin"{% endif %}>Sign In</h2>
 
-    {{ form_widget(form._token) }}
+    {% if errorMessage %}
+    <p class="error-message">
+        {{ errorMessage }}
+    </p>
+    {% endif %}
+
+    {{ form_row(form._token) }}
     <fieldset>
         {{ form_label(form.email) }}
         {{ form_widget(form.email, {'attr': {'placeholder': 'Email Address' }}) }}
