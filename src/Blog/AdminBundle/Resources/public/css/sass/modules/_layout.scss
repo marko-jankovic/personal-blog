@@ -10,7 +10,7 @@ body {
     font-family: 'Helvetica Neue',Helvetica, Georgia, Arial, sans-serif;
     line-height: 1.5;
     @include font-size(13px);
-    color: #4D4D4D;
+    color: #444;
     background: #EDEDED /*url('../img/background.jpg')*/;
     /* "Open Sans", "freight-text-pro" */
 
@@ -34,9 +34,8 @@ a {
     margin: 15px;
     overflow: hidden;
     background: #fff;
-    -moz-box-shadow:    0 1px 5px #ccc;
-    -webkit-box-shadow: 0 1px 5px #ccc;
-    box-shadow:         0 1px 5px #ccc;
+    @include box-shadow(#ccc 0 1px 5px);
+    @include border-radius(3px);
 
     .no-margin {
       margin: 0;
@@ -110,13 +109,14 @@ a {
         padding: 12px 15px;
         display: block;
         text-decoration: none;
-        color: #666;
+        color: #3B73AF;
+        background: #FDFDFD;
         @include font-size(14px);
 
         &:hover {
-            background: #EDECE4;
+            background: #f6f6f6;
             padding-left: 10px;
-            border-left: 5px solid #444;
+            border-left: 5px solid #EDC900;
         }
     }
 
@@ -124,7 +124,16 @@ a {
         box-shadow: 1px 0 0 #fff;
         padding-left: 10px;
         background: #fff;
-        border-left: 5px solid #E8EAEB;
+        color: #444;
+        font-weight: bold;
+        border-left: 5px solid #D26911;
+
+        &:hover {
+            cursor: default;
+            background: #fff;
+            padding-left: 10px;
+            border-left: 5px solid #D26911;
+        }
     }
 }
 
@@ -156,8 +165,9 @@ a {
 
         a {
             margin-left: 12px;
-            @include font-size(14px);
+            @include font-size(13px);
             text-decoration: underline;
+            text-transform: capitalize;
         }
 
         span {
@@ -174,7 +184,7 @@ a {
         height: 30px;
         padding: 6px 8px;
         color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        border: 1px solid #63AE26;
         text-transform: uppercase;
         text-decoration: none;
         @include border-radius(2px);
@@ -182,6 +192,10 @@ a {
         position: absolute;
         right: 15px;
         top: 20px;
+
+        &:hover {
+          @include background(linear-gradient(top, #9FBB58, #63AE26));
+        }
     }
 }
 
@@ -190,4 +204,8 @@ a {
     background: #555;
     border-left: 1px solid #35393B;
     border-right: 1px solid #35393B;
+
+    &:hover {
+        opacity: 0.75;
+    }
 }
