@@ -2,3 +2,6 @@
 vendor/*
 */logs/*
 */cache/*
+*.sass-cache
+/web/bundles/framework/
+/web/bundles/sensiodistribution/

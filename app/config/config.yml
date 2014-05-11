@@ -73,3 +73,15 @@ services:
     debug.twig.extension:
         class: Twig_Extensions_Extension_Debug
         tags: [{ name: 'twig.extension' }]
+
+    debug.twig.text:
+            class: Twig_Extensions_Extension_Text
+            tags: [{ name: 'twig.extension' }]
+
+
+# Doctrine Extensions Configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+            sluggable: true

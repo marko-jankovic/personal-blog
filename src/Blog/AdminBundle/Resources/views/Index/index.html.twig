@@ -21,13 +21,19 @@
                     Users
                 </a>
             </li>
-            <li><a href="">Posts</a></li>
+            <li>
+                <a href="{{path('admin_post')}}" {% if app.request.get('_route') == 'admin_post' %} class="active"{% endif %}>
+                    Posts
+                </a>
+            </li>
             <li><a href="">Categories</a></li>
         </ul>
     </div>
 
     <div id="content">
     {% include [
+        'BlogAdminBundle:Index:posts/'~ actionName ~ '.html.twig',
+        'BlogAdminBundle:Index:authors/'~ actionName ~ '.html.twig',
         'BlogAdminBundle:Index:settings/'~ actionName ~ '.html.twig',
         'BlogAdminBundle:Index:default.html.twig']
         ignore missing

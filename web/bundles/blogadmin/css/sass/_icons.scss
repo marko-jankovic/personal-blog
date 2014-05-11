@@ -1,0 +1,17 @@
+
+/* Compass Sprite Generation */
+$icn-spacing: 27px;
+
+@import "icn/*.png";
+@include all-icn-sprites;
+
+.icon-service {
+	background: sprite($icn-sprites, service) no-repeat;
+  	background-position: sprite-position($icn-sprites, service, 7px, 2px);
+  	
+  	@include responsive($screen-small){
+  		background-position: sprite-position($icn-sprites, service, 7px, 9px);
+  	}
+  	
+	text-indent: -99999px;
+}

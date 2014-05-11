@@ -11,7 +11,7 @@ body {
     line-height: 1.5;
     @include font-size(13px);
     color: #444;
-    background: #EDEDED;
+    background: url('../img/texture-grain.png');
 
     strong {
         font-weight: 400;
@@ -114,14 +114,14 @@ a {
 
         &:hover {
             background: #f6f6f6;
-            padding-left: 10px;
+            padding-left: 11px;
             border-left: 4px solid #EDC900;
         }
     }
 
     .active {
         box-shadow: 1px 0 0 #fff;
-        padding-left: 10px;
+        padding-left: 11px;
         background: #fff;
         color: #444;
 
@@ -132,7 +132,7 @@ a {
         &:hover {
             cursor: default;
             background: #fff;
-            padding-left: 10px;
+            padding-left: 11px;
             border-left: 4px solid #D26911;
         }
     }
@@ -149,10 +149,10 @@ a {
         @include font-size(18px);
         letter-spacing: 0.4px;
         text-transform: uppercase;
+        border-bottom: 1px #ededed solid;
     }
 
     ul {
-        border-top: 1px #ededed solid;
         padding: 12px 15px;
     }
 
@@ -208,5 +208,44 @@ a {
 
     &:hover {
         opacity: 0.75;
+    }
+}
+
+.showPosts {
+
+  article {
+      padding: 10px 25px 20px 25px;
+      border-bottom: 1px solid #EDEDED;
+      margin: 0 10px;
+  }
+
+  .status {
+      color: #AAA9A2;
+      @include font-size(12px);
+  }
+
+  .post-actions {
+      margin: 0 10px;
+      padding: 10px 25px 0;
+      text-align: left;
+
+      a {
+          display: inline-block;
+          margin-right: 10px;
+          text-transform: capitalize;
+          border: 1px #ccc solid;
+          padding: 2px 7px;
+          background: #f6f6f6;
+          @include border-radius(3px);
+      }
+  }
+}
+
+#edit-create-post {
+    margin: 30px 70px;
+
+    textarea {
+        margin: 15px 0;
+        height: 300px;
     }
 }

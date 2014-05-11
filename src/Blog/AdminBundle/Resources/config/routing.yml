@@ -19,9 +19,37 @@ admin_forgot:
     defaults: { _controller: BlogAdminBundle:Index:forgot }
 
 
+
+admin_author_show:
+    pattern: /author/{slug}
+    defaults: { _controller: BlogAdminBundle:Author:show }
+
+
+admin_post:
+    pattern: /post
+    defaults: { _controller: BlogAdminBundle:Post:index }
+
+admin_post_show:
+    pattern: /post/{slug}
+    defaults: { _controller: BlogAdminBundle:Post:show }
+
+admin_post_edit:
+    pattern: /post/edit/{id}
+    defaults: { _controller: BlogAdminBundle:Post:edit }
+
+admin_post_new:
+    pattern: /post/new
+    defaults: { _controller: BlogAdminBundle:Post:new }
+
+
+
+
 admin_setting:
     pattern:  /settings
     defaults: { _controller: BlogAdminBundle:Settings:index }
+
+
+
 
 admin_users:
     pattern:  /settings/users
