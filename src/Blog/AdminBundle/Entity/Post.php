@@ -60,6 +60,23 @@ class Post extends TimeStamp
     private $author;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="posts", cascade={"remove"})
+     * @Assert\NotBlank
+     */
+    private $comments;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -144,7 +161,7 @@ class Post extends TimeStamp
     /**
      * Set author
      *
-     * @param \Blog\AdminBundle\Entity\Author $author
+     * @param Author $author
      * @return Post
      */
     public function setAuthor(Author $author)
@@ -157,10 +174,43 @@ class Post extends TimeStamp
     /**
      * Get author
      *
-     * @return \Blog\AdminBundle\Entity\Author 
+     * @return Author
      */
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Comment $comments
+     * @return Post
+     */
+    public function addComment(Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Comment $comments
+     */
+    public function removeComment(Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
