@@ -45,12 +45,25 @@ mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         $i = 0;
 
         foreach ($posts as $post) {
-            $comment = new Comment();
-            $comment->setAuthorName('Someone');
-            $comment->setBody($comments[$i++]);
-            $comment->setPost($post);
 
-            $manager->persist($comment);
+            $comment1 = new Comment();
+            $comment1->setAuthorName('Someone1');
+            $comment1->setBody($comments[0]);
+            $comment1->setPost($post);
+
+            $comment2 = new Comment();
+            $comment2->setAuthorName('Someone2');
+            $comment2->setBody($comments[1]);
+            $comment2->setPost($post);
+
+            $comment3 = new Comment();
+            $comment3->setAuthorName('Someone3');
+            $comment3->setBody($comments[2]);
+            $comment3->setPost($post);
+
+            $manager->persist($comment1);
+            $manager->persist($comment2);
+            $manager->persist($comment3);
         }
 
         $manager->flush();

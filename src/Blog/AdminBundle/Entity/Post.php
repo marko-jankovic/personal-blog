@@ -29,9 +29,9 @@ class Post extends TimeStamp
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=150)
+     * @Assert\NotBlank
      */
     private $title;
-
 
     /**
      * @var string
@@ -49,7 +49,6 @@ class Post extends TimeStamp
      */
     private $body;
 
-
     /**
      * @var Author
      *
@@ -62,10 +61,10 @@ class Post extends TimeStamp
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="posts", cascade={"remove"})
-     * @Assert\NotBlank
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"remove"})
      */
     private $comments;
+
 
     /**
      * Constructor
@@ -74,7 +73,6 @@ class Post extends TimeStamp
     {
         $this->comments = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -161,7 +159,8 @@ class Post extends TimeStamp
     /**
      * Set author
      *
-     * @param Author $author
+     * @param \Blog\AdminBundle\Entity\Author $author
+     *
      * @return Post
      */
     public function setAuthor(Author $author)
@@ -174,7 +173,7 @@ class Post extends TimeStamp
     /**
      * Get author
      *
-     * @return Author
+     * @return \Blog\AdminBundle\Entity\Author
      */
     public function getAuthor()
     {
@@ -185,6 +184,7 @@ class Post extends TimeStamp
      * Add comments
      *
      * @param Comment $comments
+     *
      * @return Post
      */
     public function addComment(Comment $comments)
@@ -207,7 +207,7 @@ class Post extends TimeStamp
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {

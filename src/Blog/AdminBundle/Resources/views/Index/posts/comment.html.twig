@@ -1,0 +1,11 @@
+<br>
+<div>
+    <p>{{ comment.authorName }}</p>
+    <time datetime="{{ comment.createdAt | date('c') }}">
+        {{ comment.createdAt | date }}
+    </time>
+
+    <p>
+        {{ comment.body | nl2br }}
+    </p>
+</div>

@@ -50,7 +50,7 @@ class Comment extends TimeStamp
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,7 +73,7 @@ class Comment extends TimeStamp
     /**
      * Get authorName
      *
-     * @return string 
+     * @return string
      */
     public function getAuthorName()
     {
@@ -96,7 +96,7 @@ class Comment extends TimeStamp
     /**
      * Get body
      *
-     * @return string 
+     * @return string
      */
     public function getBody()
     {
@@ -119,7 +119,7 @@ class Comment extends TimeStamp
     /**
      * Get post
      *
-     * @return \Blog\AdminBundle\Entity\Post 
+     * @return \Blog\AdminBundle\Entity\Post
      */
     public function getPost()
     {

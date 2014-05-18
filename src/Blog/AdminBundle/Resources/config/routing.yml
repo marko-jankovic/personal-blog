@@ -41,7 +41,9 @@ admin_post_new:
     pattern: /post/new
     defaults: { _controller: BlogAdminBundle:Post:new }
 
-
+admin_post_create_comment:
+  pattern: /{slug}/create-comment
+  defaults: { _controller: BlogAdminBundle:Post:createComment }
 
 
 admin_setting:

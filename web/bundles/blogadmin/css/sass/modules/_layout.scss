@@ -19,7 +19,7 @@ body {
 }
 
 a {
-    color: #3B73AF;
+    color: #3B73AF; /* 0065A8 */
     text-decoration: none;
     font-weight: 400;
     transition: color 0.3s ease 0s;
@@ -116,7 +116,8 @@ a {
         &:hover {
             background: #f6f6f6;
             padding-left: 11px;
-            border-left: 4px solid #EDC900;
+            border-left: 4px solid #B6A676;
+            @include border-radius(3px 0 0 3px);
         }
     }
 
@@ -125,6 +126,7 @@ a {
         padding-left: 11px;
         background: #fff;
         color: #444;
+        @include border-radius(3px 0 0 3px);
 
 
         font-weight: bold;
@@ -213,6 +215,10 @@ a {
 }
 
 .showPosts {
+
+  h3 {
+      @include font-size(16px);
+  }
 
   article {
       padding: 10px 25px 20px 25px;

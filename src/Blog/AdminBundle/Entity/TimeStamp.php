@@ -25,7 +25,6 @@ abstract class TimeStamp {
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
-     * @Assert\NotBlank
      */
     private $createdAt;
 
@@ -34,7 +33,6 @@ abstract class TimeStamp {
      *
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
-     * @Assert\NotBlank
      */
     private $updatedAt;
 
