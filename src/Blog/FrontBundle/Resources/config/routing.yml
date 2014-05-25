@@ -1,0 +1,16 @@
+front_posts:
+    pattern: /posts
+    defaults: { _controller: FrontBundle:Posts:index }
+
+front_posts_show:
+    pattern: /posts/{slug}
+    defaults: { _controller: FrontBundle:Posts:show }
+
+
+front_post_create_comment:
+  pattern: /posts/{slug}/create-comment
+  defaults: { _controller: FrontBundle:Posts:createComment }
+
+front_author_show:
+    pattern: /author/{slug}
+    defaults: { _controller: FrontBundle:Author:show }

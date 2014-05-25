@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    {% include 'AdminBundle:Security:register-signin-header.html.twig' %}
+{% endblock %}
+
+{% block container %}
+
+    <form id="login-form" name="login" method="post" action="{{ path('admin_security_login_check') }}">
+        <h2 {% if error %}class="no-margin"{% endif %}>Sign In</h2>
+
+        {% if error %}
+        <p class="error-message">
+            {{ error.message }}
+        </p>
+        {% endif %}
+
+        {{ form_row(form._token) }}
+        <fieldset>
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'placeholder': 'Email Address' }}) }}
+        </fieldset>
+
+        <fieldset>
+            {{ form_label(form.password) }}
+            {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+        </fieldset>
+
+        <fieldset>
+            {{ form_widget(form.keep_me) }}
+            {{ form_label(form.keep_me, null, {'label_attr': {'class': 'register-signin-checkbox'}}) }}
+            <a href="{{ path('admin_security_forgot') }}" class="forgotPassword">Forgot password?</a>
+        </fieldset>
+
+        <button type="submit">Sign In</button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

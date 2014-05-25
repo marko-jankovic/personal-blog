@@ -23,12 +23,11 @@ class AuthorController extends Controller{
      * @throws NotFoundHttpException
      * @return array
      *
-     * @Route("/author/{slug}")
      */
     public function showAction($slug)
     {
 
-        $author = $this->getDoctrine()->getRepository('BlogAdminBundle:Author')
+        $author = $this->getDoctrine()->getRepository('ModelBundle:Author')
                      ->findOneBy(
                      array(
                          'slug' => $slug
@@ -39,20 +38,17 @@ class AuthorController extends Controller{
             throw $this->createNotFoundException('Post was not found!');
         }
 
-        $posts = $this->getDoctrine()->getRepository('BlogAdminBundle:Post')
+        $posts = $this->getDoctrine()->getRepository('ModelBundle:Post')
                        ->findBy(
                        array(
                            'author' => $author
                        )
             );
 
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-                array(
-                    'actionName' => 'showPosts',
-                    'author'     => $author,
-                    'posts'      => $posts
-                )
+        return array(
+            'actionName' => 'showPosts',
+            'author'     => $author,
+            'posts'      => $posts
         );
     }
 } 

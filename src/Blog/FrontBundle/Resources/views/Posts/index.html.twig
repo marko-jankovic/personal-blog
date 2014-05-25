@@ -1,0 +1,17 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block content %}
+    <div id="content">
+        <h2>All Posts</h2>
+
+        {% for post in posts %}
+            <article class="post">
+                <h3>
+                    <a href="{{ path('front_posts_show', {'slug': post.slug }) }}">
+                        {{ post.title }}
+                    </a>
+                </h3>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

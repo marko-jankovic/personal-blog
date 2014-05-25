@@ -17,12 +17,12 @@
                 </a>
             </li>
             <li>
-                <a href="{{path('admin_users')}}" {% if app.request.get('_route') == 'admin_users' %} class="active"{% endif %}>
+                <a href="{{ path('admin_users') }}" {% if app.request.get('_route') == 'admin_users' %} class="active"{% endif %}>
                     Users
                 </a>
             </li>
             <li>
-                <a href="{{path('admin_post')}}" {% if app.request.get('_route') == 'admin_post' %} class="active"{% endif %}>
+                <a href="{{ path('admin_post') }}" {% if app.request.get('_route') == 'admin_post' %} class="active"{% endif %}>
                     Posts
                 </a>
             </li>
@@ -32,15 +32,9 @@
         </ul>
     </div>
 
-    <div id="content">
-    {% include [
-        'AdminBundle:Index:posts/'~ actionName ~ '.html.twig',
-        'AdminBundle:Index:authors/'~ actionName ~ '.html.twig',
-        'AdminBundle:Index:settings/'~ actionName ~ '.html.twig',
-        'AdminBundle:Index:default.html.twig']
-        ignore missing
-    %}
-    </div>
+    {% block content %}
+        <div id="content">Default</div>
+    {% endblock %}
 
 
 {% endblock %}

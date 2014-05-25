@@ -7,33 +7,29 @@
 
 namespace Blog\AdminBundle\Controller;
 
-use Blog\AdminBundle\Form\Type\CommentType;
-use Blog\AdminBundle\Entity\Comment;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Blog\ModelBundle\Form\Type\CommentType;
+use Blog\ModelBundle\Services\PostManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
 
+    /**
+     * @return array
+     *
+     * @Template()
+     */
     public function indexAction()
     {
+        $posts = $this->getPostManager()->findAll();
 
-        $posts = $this->getDoctrine()
-                 ->getRepository('BlogAdminBundle:Post')
-                 ->findAll();
-
-        //$latestPost = $this->getDoctrine()->getRepository('BlogAdminBundle:Post')->findLatest(5);
-        //$findFirst = $this->getDoctrine()->getRepository('BlogAdminBundle:Post')->findFirst();
-
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-                array(
-                    'actionName' => 'showPosts',
-                    'posts' => $posts
-                )
+        return array(
+            'posts'         => $posts,
+            'actionName'    => "showPosts"
         );
     }
 
@@ -46,116 +42,49 @@ class PostController extends Controller
      * @throws NotFoundHttpException
      * @return array
      *
-     * @Route("/{slug}")
+     * @Template()
      */
     public function showAction($slug)
     {
-
-        $post = $this->getDoctrine()->getRepository('BlogAdminBundle:Post')
-                      ->findOneBy(
-                            array(
-                                'slug' => $slug
-                            )
-                        );
-
-        if($post === null)
-        {
-            throw $this->createNotFoundException('Post was not found!');
-        }
+        $post = $this->getPostManager()->findBySlug($slug);
 
         $form = $this->createForm(new CommentType());
 
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-                array(
-                    'actionName' => 'showPosts',
-                    'posts'      => $post,
-                    'form'       => $form->createView()
-                )
-        );
-    }
-
-
-    /**
-     * Create comment
-     *
-     * @param Request $request
-     * @param string  $slug
-     *
-     * @throws NotFoundHttpException
-     * @return array
-     */
-    public function createCommentAction(Request $request, $slug)
-    {
-        $post = $this->getDoctrine()->getRepository('BlogAdminBundle:Post')->findOneBy(
-            array(
-                'slug' => $slug
-            )
-        );
-
-        if ($post === null) {
-            throw $this->createNotFoundException('Post was not found!');
-        }
-
-        $comment = new Comment();
-        $comment->setPost($post);
-
-        $form = $this->createForm(new CommentType(), $comment);
-        $form->handleRequest($request);
-
-
-        if ($form->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add('success', 'Your comment was submitted');
-
-            return $this->redirect($this->generateUrl('admin_post_show',
-                array(
-                    'slug' => $post->getSlug()
-                )
-            ));
-        }
-        else {
-            var_dump($form->getErrors());
-        }
-
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-                array(
-                    'actionName' => 'showPosts',
-                    'posts'      => $post,
-                    'form'       => $form->createView()
-                )
+        return array(
+            'post'      => $post,
+            'actionName' => 'showPosts',
+            'form'       => $form->createView()
         );
     }
 
     public function editAction($id)
     {
         $post = $this->getDoctrine()
-                     ->getRepository('BlogAdminBundle:Post')
+                     ->getRepository('AdminBundle:Post')
                      ->findOneBy(array('id' => $id));
 
 
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-                array(
-                    'actionName' => 'editPost',
-                    'post'       => $post
-                )
+        return array(
+            'actionName' => 'editPost',
+            'post'       => $post
         );
     }
 
     public function newAction()
     {
-        return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
-                array(
-                    'actionName' => 'createPost'
-                )
+        return array(
+            'actionName' => 'createPost'
         );
+    }
+
+    /**
+     * Get Post manager
+     *
+     * @return PostManager
+     */
+    private function getPostManager()
+    {
+        return $this->get('postManager');
     }
 
 } 

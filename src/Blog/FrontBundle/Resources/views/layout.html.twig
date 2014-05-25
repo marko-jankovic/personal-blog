@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <div id="header" class="register-signin-header">
+
+        <p style="float: left;">Marko Jankovic Blog</p>
+
+        <a href="{{ path('admin_security_login') }}">Sign In</a>
+        or
+        <a href="{{ path('admin_security_register') }}">Register</a>
+    </div>
+{% endblock %}
+
+{% block container %}
+
+    {% block content %}
+        <div id="content">Default</div>
+    {% endblock %}
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

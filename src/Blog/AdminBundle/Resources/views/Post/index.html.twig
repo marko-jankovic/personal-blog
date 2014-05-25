@@ -1,0 +1,30 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <div id="content">
+        <h2>All Posts</h2>
+
+        {% for post in posts %}
+            <article class="post">
+                <header>
+                    <h3>
+                        <a href="{{ path('admin_post_show', {'slug': post.slug }) }}">{{ post.title }}</a>
+                    </h3>
+                    <span class="status">PUBLISHED</span> by
+                    <a href="{{ path('admin_author_show', {'slug': post.author.slug}) }}">
+                        {{ post.author.name }}
+                    </a>
+                    <time datetime="{{ post.createdAt | date('c') }}">
+                        ({{ post.createdAt | date }})
+                    </time>
+
+                    - <a class="comments" href="{{ path('admin_post_show', {'slug': post.slug }) }}#post-comments">
+                        {% set count = post.comments | length %}
+                        {{ count }} Comments
+                    </a>
+                </header>
+                <p class="entry">{{ post.body | truncate(150) }}</p>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

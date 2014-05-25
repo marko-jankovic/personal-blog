@@ -1,0 +1,23 @@
+{% if posts is iterable %}
+    <h2>All Posts</h2>
+{% else %}
+    <h2>Post: {{ posts.title }}</h2>
+{% endif %}
+
+<a href="{{ path('admin_post_new') }}" class="button-add">Create new Post</a>
+
+{% if posts is iterable %}
+
+    {% for post in posts %}
+        {% include 'AdminBundle:Index:posts/item.html.twig' with {post: post} %}
+    {% endfor %}
+
+{% else %}
+
+    <div class="post-actions">
+        <a href="{{ path('admin_post_edit', {'id': posts.id }) }}">edit</a>
+        <a href="{{ path('admin_post_edit', {'id': posts.id }) }}">delete</a>
+    </div>
+    {% include 'AdminBundle:Index:posts/item.html.twig' with {post: posts} %}
+
+{% endif %}

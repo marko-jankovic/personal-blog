@@ -214,6 +214,12 @@ a {
     }
 }
 
+#post-comments {
+  padding: 10px 25px 20px 25px;
+  border-bottom: 1px solid #EDEDED;
+  margin: 0 10px;
+}
+
 .showPosts {
 
   h3 {
@@ -224,6 +230,10 @@ a {
       padding: 10px 25px 20px 25px;
       border-bottom: 1px solid #EDEDED;
       margin: 0 10px;
+
+      &:hover {
+          background: #EBF2F9;
+      }
   }
 
   .status {

@@ -7,29 +7,25 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SettingsController extends Controller
 {
+
+
     public function indexAction(Request $request)
     {
-        if ($request->getSession()->has('login'))
-        {
-            return $this->render(
-                        'BlogAdminBundle:Index:index.html.twig',
-                            array('actionName' => 'index')
-            );
-        }
-        else {
-            return $this->redirect($this->generateUrl('admin_login'));
-        }
+        return $this->render(
+            'AdminBundle:Index:index.html.twig',
+            array('actionName' => 'index')
+        );
     }
 
 
     public function usersAction()
     {
         $users = $this->getDoctrine()
-                     ->getRepository('BlogAdminBundle:User')
+                     ->getRepository('ModelBundle:User')
                      ->findAll();
 
         return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
+            'AdminBundle:Index:index.html.twig',
                 array(
                     'actionName' => 'users',
                     'users'       => $users
@@ -40,12 +36,12 @@ class SettingsController extends Controller
     public function editAction($id) {
 
         $user = $this->getDoctrine()
-                     ->getRepository('BlogAdminBundle:User')
+                     ->getRepository('ModelBundle:User')
                      ->findOneBy(array('id' => $id));
 
 
         return $this->render(
-            'BlogAdminBundle:Index:index.html.twig',
+            'AdminBundle:Index:index.html.twig',
                 array(
                     'actionName' => 'user',
                     'user'      => $user
@@ -57,7 +53,7 @@ class SettingsController extends Controller
     {
 
         $user = $this->getDoctrine()
-                     ->getRepository('BlogAdminBundle:User')
+                     ->getRepository('ModelBundle:User')
                      ->findBy(array('id' => $id));
 
         var_dump($user);
