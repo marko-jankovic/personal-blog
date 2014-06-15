@@ -29,7 +29,7 @@ class Comments extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $posts = $manager->getRepository('BlogModelBundle:Post')->findAll();
+        $posts = $manager->getRepository('ModelBundle:Post')->findAll();
 
         $comments = array(
             0 => 'Mauris posuere adipiscing sapien eu ultricies. Nunc a dignissim dolor. Duis porttitor faucibus nulla, eu

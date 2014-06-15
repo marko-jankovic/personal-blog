@@ -22,10 +22,6 @@ class LoginType extends AbstractType
              ->add('password', 'password', array(
                  'label' => 'Password: *'
              ))
-             ->add('keep_me', 'checkbox', array(
-                 'label'    => 'Keep me signed in',
-                 'required' => false
-             ))
              ->getForm();
     }
 
