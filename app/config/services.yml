@@ -1,6 +1,7 @@
 parameters:
     author_manager.class: Blog\ModelBundle\Services\AuthorManager
     post_manager.class: Blog\ModelBundle\Services\PostManager
+    user_manager.class: Blog\ModelBundle\Services\UserManager
 
 services:
     author_manager:
@@ -13,3 +14,8 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - @form.factory
+
+    user_manager:
+            class: %user_manager.class%
+            arguments:
+                - @doctrine.orm.entity_manager
