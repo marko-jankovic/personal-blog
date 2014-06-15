@@ -274,6 +274,15 @@
 - IS_AUTHENTICATED_FULLY (Authenticated during current session)
 
 
+- Login Form
+
+    - Created email field and remaped in firewals -> form_login -> username_parameter: _email
+
+         access_control:
+            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/settings/users, roles: ROLE_ADMIN }
+            - { path: ^/settings, roles: ROLE_USER }
+            - { path: ^/settings/users*, roles: ROLE_ADMIN }
 
 
 
