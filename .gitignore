@@ -1,7 +1,9 @@
 # Symfony directories
 vendor/*
+app/bootstrap.php.cache
+app/cache/*
+app/logs/*
 */logs/*
 */cache/*
 *.sass-cache
-/web/bundles/framework/
-/web/bundles/sensiodistribution/
+/web/bundles*
