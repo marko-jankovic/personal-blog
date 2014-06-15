@@ -28,9 +28,6 @@ admin_setting:
     pattern:  /settings
     defaults: { _controller: AdminBundle:Settings:index }
 
-
-
-
 admin_users:
     pattern:  /settings/users
     defaults: { _controller: AdminBundle:Settings:users }
@@ -45,22 +42,24 @@ admin_user_delete:
 
 
 
-admin_security_login:
-  pattern:  /admin/login
-  defaults: { _controller: AdminBundle:Security:login }
+admin_user_login:
+  pattern:  /login
+  defaults: { _controller: AdminBundle:Login:login }
 
-admin_security_login_check:
-  pattern:  /admin/loginCheck
-  defaults: { _controller: AdminBundle:Security:loginCheck }
+admin_user_check:
+  pattern:  /loginCheck
+  defaults: { _controller: AdminBundle:Login:loginCheck }
 
-admin_security_logout:
-  pattern:  /admin/logout
-  defaults: { _controller: AdminBundle:Security:logout }
+admin_user_logout:
+  pattern:  /logout
+  defaults: { _controller: AdminBundle:Login:logout }
 
-admin_security_register:
-    pattern:  /admin/register
-    defaults: { _controller: AdminBundle:Security:register }
 
-admin_security_forgot:
-    pattern:  /admin/forgot
-    defaults: { _controller: AdminBundle:Security:forgot }
+
+admin_user_register:
+    pattern:  /register
+    defaults: { _controller: AdminBundle:Register:register }
+
+admin_user_forgot:
+    pattern:  /forgot
+    defaults: { _controller: AdminBundle:Forgot:forgot }

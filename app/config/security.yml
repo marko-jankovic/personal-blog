@@ -1,35 +1,45 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+      Blog\ModelBundle\Entity\User: sha512
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    admin: { password: marecare, roles: [ 'ROLE_ADMIN' ] }
+        users:
+            entity: { class: ModelBundle:User}
+
 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
 
         admin_area:
-            pattern: ^/admin/
-            anonymous: ~
-            http_basic:
+
+            pattern: ^/.*
+
             form_login:
-                login_path: admin_security_login
-                check_path: admin_security_login_check
+                login_path: admin_user_login
+                check_path: admin_user_check
+                default_target_path: admin_setting
+                username_parameter: _email
+                remember_me: true
+
             logout:
-                path: admin_security_logout
-                target: /admin/login
+                path: admin_user_logout
+                target: admin_user_login
+
+            remember_me:
+                key: MiPassphrase
+                lifetime: 1800
+                path: /.*
+                domain: ~
+            security: true
+            anonymous: ~
+
+
+        front_area:
+            pattern: ^/
+            anonymous: ~
 
     access_control:
-        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/forgot, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/settings/users/, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/settings/users, roles: ROLE_ADMIN }

@@ -6,6 +6,7 @@
 	margin: auto;
 	@include font-size(14px);
 	color: #777;
+    border: 1px #ccc solid;
 	@include border-radius(6px);
 	@include box-shadow(#d4d4d4 0 1px 3px);
 

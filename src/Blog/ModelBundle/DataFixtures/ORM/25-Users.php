@@ -37,6 +37,8 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
         $user = new User();
         $user->setUsername('user');
         $user->setPassword($this->encodePassword($user, 'userpass'));
+        $user->setRoles(array('ROLE_USER'));
+        $user->setIsActive(true);
         $user->setEmail('user@example.com');
         $manager->persist($user);
 

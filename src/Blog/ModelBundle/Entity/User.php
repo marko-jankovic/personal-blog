@@ -84,26 +84,9 @@ class User implements AdvancedUserInterface, Serializable
     private $email;
 
 
-    private $keep_me;
-
-
     public function __construct()
     {
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
-    }
-
-
-    public function getKeepMe()
-    {
-        return $this->keep_me;
-    }
-
-
-    public function setKeepMe($keepMe)
-    {
-        $this->keep_me = $keepMe;
-
-        return $this;
     }
 
     /**
@@ -257,7 +240,10 @@ class User implements AdvancedUserInterface, Serializable
      */
     public function getRoles()
     {
-        return $this->roles;
+        $roles =  $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
 

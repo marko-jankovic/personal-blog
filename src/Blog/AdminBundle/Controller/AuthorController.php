@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class AuthorController extends Controller{
 
@@ -22,7 +23,7 @@ class AuthorController extends Controller{
      *
      * @throws NotFoundHttpException
      * @return array
-     *
+     * @Template()
      */
     public function showAction($slug)
     {
@@ -38,17 +39,9 @@ class AuthorController extends Controller{
             throw $this->createNotFoundException('Post was not found!');
         }
 
-        $posts = $this->getDoctrine()->getRepository('ModelBundle:Post')
-                       ->findBy(
-                       array(
-                           'author' => $author
-                       )
-            );
-
         return array(
             'actionName' => 'showPosts',
-            'author'     => $author,
-            'posts'      => $posts
+            'author'     => $author
         );
     }
 } 

@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <div id="header" class="register-signin-header">
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
+        or
+        <a href="{{ path('admin_user_login') }}">Login</a>
+    </div>
+{% endblock %}
+
+{% block container %}
+
+    <form id="login-form" name="login" method="post" action="{{ path('admin_user_check') }}">
+        <h2 {% if error %}class="no-margin"{% endif %}>Sign In</h2>
+
+        {% if error %}
+        <p class="error-message">
+            {{ error.message }}
+        </p>
+        {% endif %}
+
+        {{ form_row(form._token) }}
+
+        <fieldset>
+            {{ form_label(form._email) }}
+            {{ form_widget(form._email, {'attr': {'placeholder': 'Email' }}) }}
+        </fieldset>
+
+        <fieldset>
+            {{ form_label(form._password) }}
+            {{ form_widget(form._password, {'attr': {'placeholder': 'Password'}}) }}
+        </fieldset>
+
+        <fieldset>
+            {{ form_label(form._remember_me, null, {'label_attr': {'class': 'register-signin-checkbox' }}) }}
+            {{ form_widget(form._remember_me) }}
+
+            <a href="{{ path('admin_user_forgot') }}" class="forgotPassword">Forgot password?</a>
+        </fieldset>
+
+        <button type="submit">Sign In</button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

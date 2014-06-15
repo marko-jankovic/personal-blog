@@ -1,7 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    {% include 'AdminBundle:Security:register-signin-header.html.twig' %}
+    <div id="header" class="register-signin-header">
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
+        or
+        <a href="{{ path('admin_user_login') }}">Login</a>
+    </div>
 {% endblock %}
 
 {% block container %}

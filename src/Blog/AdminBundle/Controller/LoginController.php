@@ -9,13 +9,12 @@ namespace Blog\AdminBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Blog\ModelBundle\Form\Type\LoginType;
 
-class SecurityController extends Controller {
+class LoginController extends Controller {
 
     /**
      * Login
@@ -59,41 +58,13 @@ class SecurityController extends Controller {
 
     }
 
-
-    /**
-     * Forgot your password
-     *
-     * @Template()
-     */
-    public function forgotAction()
-    {
-
-        $actionName = 'forgot';
-
-        return array('actionName' => $actionName);
-    }
-
-    /**
-     * Register action
-     *
-     * @Template()
-     */
-    public function registerAction()
-    {
-
-        //        $user = new User();
-        //
-        //        $user->setUsername("Marko")
-        //             ->setEmail("markj@vast.com")
-        //             ->setPassword("123456");
-        //
-        //        // get entity manager
-        //        $em = $this->getDoctrine()->getManager();
-        //        $em->persist($user);
-        //        $em->flush();
-
-        $actionName = 'register';
-
-        return array('actionName' => $actionName);
-    }
+//    /**
+//     * Get Post manager
+//     *
+//     * @return PostManager
+//     */
+//    private function getUserManager()
+//    {
+//        return $this->get('userManager');
+//    }
 }

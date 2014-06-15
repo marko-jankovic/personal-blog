@@ -22,7 +22,6 @@ class AppKernel extends Kernel
             new Blog\FrontBundle\FrontBundle(),
             new Blog\ModelBundle\ModelBundle(),
             new Blog\AdminBundle\AdminBundle(),
-
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

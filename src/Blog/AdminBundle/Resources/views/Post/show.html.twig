@@ -12,17 +12,8 @@
 
         <article class="post">
             <header>
-                <span class="status">PUBLISHED</span> by
                 <a href="{{ path('admin_author_show', {'slug': post.author.slug}) }}">
                     {{ post.author.name }}
-                </a>
-                <time datetime="{{ post.createdAt | date('c') }}">
-                    ({{ post.createdAt | date }})
-                </time>
-
-                - <a class="comments" href="{{ path('admin_post_show', {'slug': post.slug }) }}#post-comments">
-                    {% set count = post.comments | length %}
-                    {{ count }} Comments
                 </a>
             </header>
 
@@ -30,24 +21,5 @@
 
             <p class="entry">{{ post.body}}</p>
         </article>
-
-        <br>
-
-        <div id="post-comments">
-            <h3>Comments</h3>
-            {% for comment in post.comments %}
-                {{ include('AdminBundle:Post:comment.html.twig', {comment: comment}) }}
-            {% endfor %}
-
-            <br>
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            {% endfor %}
-            <h4>Leave a Comment</h4>
-            {{ form(form, { action: path('admin_post_create_comment', {slug: post.slug}) }) }}
-        </div>
-
     </div>
 {% endblock %}

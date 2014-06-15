@@ -16,6 +16,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 class UserRepository extends EntityRepository implements UserProviderInterface
 {
+
     public function findOneByUsernameOrEmail($username)
     {
 
@@ -27,6 +28,11 @@ class UserRepository extends EntityRepository implements UserProviderInterface
                     ->getOneOrNullResult();
     }
 
+    /**
+     * Overwrited loadUserByUsername from UserProvider
+     *
+     * {@inheritDoc}
+     */
     public function loadUserByUsername($username)
     {
         $user = $this->findOneByUsernameOrEmail($username);
@@ -38,6 +44,11 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         return $user;
     }
 
+    /**
+     * Overwrited refreshUser from UserProvider
+     *
+     * {@inheritDoc}
+     */
     public function refreshUser(UserInterface $user)
     {
         $class = get_class($user);
@@ -49,6 +60,11 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         return $this->find($user->getId());
     }
 
+    /**
+     * returns entity class Blog\ModelBundle\Entity\User
+     *
+     * {@inheritDoc}
+     */
     public function supportsClass($class)
     {
         return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());

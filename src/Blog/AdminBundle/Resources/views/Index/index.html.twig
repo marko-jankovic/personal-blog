@@ -3,7 +3,16 @@
 
 {% block header %}
     <div id="header" class="register-signin-header">
-        <a class="signout" href="{{ path('admin_security_logout') }}">Log Out</a>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a class="signout" href="{{ path('admin_user_logout') }}">
+            Logout
+        </a>
+        {% else %}
+        <a class="signout" href="{{ path('admin_user_login') }}">
+            Login
+        </a>
+        {% endif %}
     </div>
 {% endblock %}
 
@@ -16,11 +25,13 @@
                     General
                 </a>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
             <li>
                 <a href="{{path('admin_users')}}" {% if app.request.get('_route') == 'admin_users' %} class="active"{% endif %}>
                     Users
                 </a>
             </li>
+            {%  endif %}
             <li>
                 <a href="{{path('admin_post')}}" {% if app.request.get('_route') == 'admin_post' %} class="active"{% endif %}>
                     Posts
