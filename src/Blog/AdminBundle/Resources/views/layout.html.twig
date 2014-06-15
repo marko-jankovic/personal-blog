@@ -8,29 +8,8 @@
 {% endblock %}
 
 {% block container %}
-    <div id="navigation">
-        <h1>Settings</h1>
-        <ul>
-            <li>
-                <a href="">
-                    General
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('admin_users') }}" {% if app.request.get('_route') == 'admin_users' %} class="active"{% endif %}>
-                    Users
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('admin_post') }}" {% if app.request.get('_route') == 'admin_post' %} class="active"{% endif %}>
-                    Posts
-                </a>
-            </li>
-            <li><a href="">Categories</a></li>
 
-            <li><a href="">Comments</a></li>
-        </ul>
-    </div>
+    {{ include('AdminBundle::_shared/admin_navigation.html.twig') }}
 
     {% block content %}
         <div id="content">Default</div>
