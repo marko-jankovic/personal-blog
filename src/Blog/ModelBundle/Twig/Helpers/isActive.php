@@ -35,10 +35,17 @@ class isActive extends \Twig_Extension {
     public function isActive($app, $routeName)
     {
 
-        if ($app->getRequest()->get('_route') == $routeName)
+        $currentPath = $app->getRequest()->get('_route');
+        $routeNameLength = strlen($routeName);
+
+        // check is $currentPath subpath of $routeName
+        $isSubPath = substr_compare($currentPath, $routeName, 0, $routeNameLength-1);
+
+        if ($currentPath == $routeName || $isSubPath === 0)
         {
             return 'class="active"';
         }
+
         return false;
     }
 
