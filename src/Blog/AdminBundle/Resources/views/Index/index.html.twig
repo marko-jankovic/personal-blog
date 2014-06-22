@@ -3,16 +3,9 @@
 
 {% block header %}
     <div id="header" class="register-signin-header">
-
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <a class="signout" href="{{ path('admin_user_logout') }}">
-            Logout
-        </a>
-        {% else %}
-        <a class="signout" href="{{ path('admin_user_login') }}">
-            Login
-        </a>
-        {% endif %}
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
+        or
+        <a href="{{ path('admin_user_login') }}">Login</a>
     </div>
 {% endblock %}
 
@@ -20,13 +13,7 @@
     {{ include('AdminBundle::_shared/admin_navigation.html.twig') }}
 
     <div id="content">
-    {% include [
-        'AdminBundle:Index:posts/'~ actionName ~ '.html.twig',
-        'AdminBundle:Index:authors/'~ actionName ~ '.html.twig',
-        'AdminBundle:Index:settings/'~ actionName ~ '.html.twig',
-        'AdminBundle:Index:default.html.twig']
-        ignore missing
-    %}
+        <h3>Default</h3>
     </div>
 
 

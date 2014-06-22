@@ -57,10 +57,13 @@ class PostController extends Controller
         );
     }
 
+    /**
+     * @Template()
+     */
     public function editAction($id)
     {
         $post = $this->getDoctrine()
-                     ->getRepository('AdminBundle:Post')
+                     ->getRepository('ModelBundle:Post')
                      ->findOneBy(array('id' => $id));
 
 
@@ -70,6 +73,19 @@ class PostController extends Controller
         );
     }
 
+    public function deleteAction($id)
+    {
+
+        $user = $this->getPostManager()
+                     ->findOneBy(array('id' => $id));
+
+        var_dump($user);
+        die();
+    }
+
+    /**
+     * @Template()
+     */
     public function newAction()
     {
         return array(

@@ -84,6 +84,25 @@ class PostManager
     }
 
     /**
+     * Find Post
+     *
+     * @param string $array
+     *
+     * @throws NotFoundHttpException
+     * @return Post
+     */
+    public function findOneBy($array)
+    {
+        $post = $this->em->getRepository('ModelBundle:Post')->findOneBy($array);
+
+        if (null === $post) {
+            throw new NotFoundHttpException('Post was not found');
+        }
+
+        return $post;
+    }
+
+    /**
      * Create and validate a new comment
      *
      * @param Post    $post

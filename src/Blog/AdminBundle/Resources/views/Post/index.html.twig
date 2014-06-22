@@ -3,6 +3,7 @@
 {% block content %}
     <div id="content">
         <h2>All Posts</h2>
+        <a href="{{ path('admin_post_new') }}" class="button-add">Create Post</a>
 
         {% for post in posts %}
             <article class="post">

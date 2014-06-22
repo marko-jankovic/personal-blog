@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <div id="header" class="register-signin-header">
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
+        or
+        <a href="{{ path('admin_user_login') }}">Login</a>
+    </div>
+{% endblock %}
+
+{% block container %}
+    {{ include('AdminBundle::_shared/admin_navigation.html.twig') }}
+
+    <div id="content">
+
+        {% if user %}
+            <h2>Edit user: {{ user.username }}</h2>
+            <a href="{{ path('admin_user_delete', {'id': user.id }) }}" class="button-add">Delete User</a>
+
+            <span>{{ user.username }}</span>
+
+            <p>
+                {{ user.username }}
+            </p>
+        {% else %}
+            <h2>Create user</h2>
+            <a href="{{ path('admin_user_create') }}" class="button-add">Create new User</a>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
