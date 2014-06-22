@@ -614,7 +614,8 @@ a:hover {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000332}}
 #wrapper {
-  /*max-width: 980px;*/
+  min-height: 610px;
+  position: relative;
   margin: 15px;
   overflow: hidden;
   background: #fff;
@@ -627,12 +628,12 @@ a:hover {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000341}}
 #wrapper .no-margin {
   margin: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000350}}
 .register #wrapper,
 .forgot #wrapper,
 .login #wrapper {
@@ -642,42 +643,45 @@ a:hover {
   box-shadow: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000358}}
 #container {
   padding: 15px 0 0 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000363}}
 #container header time {
   float: right;
   color: #1D3C4F;
   font-style: italic;
   line-height: 26px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000370}}
 #container header h2 {
   font-size: 26px;
   font-size: 2.6rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000375}}
 #container article {
   border-bottom: 2px #3B73AF solid;
   padding-bottom: 10px;
   margin-bottom: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000381}}
 #container .item-excerpt {
   font-size: 21px;
   font-size: 2.1rem;
   color: #555;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000387}}
 #navigation {
   width: 20%;
   box-shadow: 1px 0 0 #ededed;
-  float: left;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  background: #FDFDFD;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\0000395}}
 #navigation h1 {
   padding: 20px 15px 20px 40px;
   font-size: 18px;
@@ -687,25 +691,24 @@ a:hover {
   text-transform: uppercase;
   font-weight: 400;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003100}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003104}}
 #navigation ul {
   border-top: 1px #ededed solid;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003108}}
 #navigation li {
   border-bottom: 1px #ededed solid;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003112}}
 #navigation a {
   padding: 12px 15px;
   display: block;
   text-decoration: none;
   color: #3B73AF;
-  background: #FDFDFD;
   font-size: 14px;
   font-size: 1.4rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003119}}
 #navigation a:hover {
   background: #f6f6f6;
   padding-left: 11px;
@@ -716,7 +719,7 @@ a:hover {
   -o-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003127}}
 #navigation .active {
   box-shadow: 1px 0 0 #fff;
   padding-left: 11px;
@@ -730,7 +733,7 @@ a:hover {
   font-weight: bold;
   border-left: 4px solid #D26911;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003135}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003138}}
 #navigation .active:hover {
   cursor: default;
   background: #fff;
@@ -738,13 +741,14 @@ a:hover {
   border-left: 4px solid #D26911;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003144}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003147}}
 #content {
   width: 80%;
   float: left;
   position: relative;
+  margin-left: 20%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003153}}
 #content h2 {
   font-weight: 400;
   padding: 20px 15px 20px 40px;
@@ -754,20 +758,20 @@ a:hover {
   text-transform: uppercase;
   border-bottom: 1px #ededed solid;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003158}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003162}}
 #content ul {
   padding: 12px 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003162}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003166}}
 #content li {
   height: 40px;
   padding: 10px 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003166}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003170}}
 #content li:nth-child(odd) {
   background: #f2f5f6;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003174}}
 #content li a {
   margin-left: 12px;
   font-size: 13px;
@@ -775,15 +779,15 @@ a:hover {
   text-decoration: underline;
   text-transform: capitalize;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003177}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003181}}
 #content li span {
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003185}}
 #content li p {
   text-align: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003186}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003190}}
 #content .button-add {
   background: #9FBB58;
   height: 30px;
@@ -803,7 +807,7 @@ a:hover {
   right: 15px;
   top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003200}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003204}}
 #content .button-add:hover {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #9fbb58), color-stop(100%, #63ae26));
   background: -webkit-linear-gradient(top, #9fbb58, #63ae26);
@@ -812,53 +816,49 @@ a:hover {
   background: linear-gradient(top, #9fbb58, #63ae26);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003206}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003210}}
 .signout {
   padding: 14px;
   background: #555;
   border-left: 1px solid #35393B;
   border-right: 1px solid #35393B;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003212}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003216}}
 .signout:hover {
   opacity: 0.75;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003217}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003221}}
 #post-comments {
   padding: 10px 25px 20px 25px;
   border-bottom: 1px solid #EDEDED;
   margin: 0 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003225}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003229}}
 .showPosts h3 {
   font-size: 16px;
   font-size: 1.6rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003229}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003233}}
 .showPosts article {
   padding: 10px 25px 20px 25px;
   border-bottom: 1px solid #EDEDED;
   margin: 0 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003234}}
-.showPosts article:hover {
-  background: #EBF2F9;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003239}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003243}}
 .showPosts .status {
   color: #AAA9A2;
   font-size: 12px;
   font-size: 1.2rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003244}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003248}}
 .showPosts .post-actions {
   margin: 0 10px;
   padding: 10px 25px 0;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003249}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003253}}
 .showPosts .post-actions a {
   display: inline-block;
   margin-right: 10px;
@@ -879,17 +879,17 @@ a:hover {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003261}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003265}}
 .showPosts .post-actions a:hover {
   background: #f2f2f2;
   border: 1px #9EABB3 solid;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003269}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003273}}
 #edit-create-post {
   margin: 30px 70px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003272}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_layout\.scss}line{font-family:\00003276}}
 #edit-create-post textarea {
   margin: 15px 0;
   height: 300px;
@@ -905,6 +905,7 @@ a:hover {
   font-size: 14px;
   font-size: 1.4rem;
   color: #777;
+  border: 1px #ccc solid;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
@@ -914,7 +915,7 @@ a:hover {
   -moz-box-shadow: #d4d4d4 0 1px 3px;
   box-shadow: #d4d4d4 0 1px 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000313}}
 #login-form h2 {
   margin: 0 0 15px 0;
   border: 1px #3B73AF;
@@ -927,16 +928,16 @@ a:hover {
   font-size: 22px;
   font-size: 2.2rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000325}}
 #login-form fieldset {
   padding: 0px 25px 12px 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000329}}
 #login-form label {
   color: #444;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000334}}
 .register-signin-header {
   overflow: hidden;
   padding: 12px;
@@ -945,7 +946,7 @@ a:hover {
   text-align: right;
   color: #999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000342}}
 .register-signin-header a {
   color: #CACACA;
   font-size: 13px;
@@ -953,12 +954,12 @@ a:hover {
   margin: 0 7px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000349}}
 .asterisk-logo {
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000356}}
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -972,7 +973,7 @@ textarea {
   border: 1px #ddd solid;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000366}}
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
@@ -980,7 +981,7 @@ textarea:focus {
   background: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000371}}
 button {
   width: 140px;
   color: white;
@@ -1004,12 +1005,12 @@ button {
   margin: 15px auto auto;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000383}}
 button:disabled {
   opacity: 0.7;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000388}}
 .error-message {
   margin-bottom: 20px;
   padding: 15px;
@@ -1019,13 +1020,13 @@ button:disabled {
   color: #B94A48;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000397}}
 #login_keep_me {
   float: left;
   margin: 2px 5px 0 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003102}}
 .register-signin-checkbox {
   color: #9B9B9B;
   font-size: 12px;
@@ -1033,7 +1034,7 @@ button:disabled {
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003108}}
 .forgotPassword {
   float: right;
   font-weight: 400;

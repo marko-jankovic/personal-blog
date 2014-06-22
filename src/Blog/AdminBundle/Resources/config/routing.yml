@@ -1,4 +1,5 @@
 #Admin Index
+
 admin_admin:
     pattern:  /admin
     defaults: { _controller: AdminBundle:Index:index }
@@ -7,6 +8,7 @@ admin_admin:
 
 
 #Admin Author
+
 admin_author_show:
     pattern: /admin/author/{slug}
     defaults: { _controller: AdminBundle:Author:show }
@@ -14,7 +16,42 @@ admin_author_show:
 ########################################################
 
 
+#Admin Category
+
+admin_category:
+    pattern: /admin/category
+    defaults: { _controller: AdminBundle:Category:index }
+
+########################################################
+
+
+#Admin Comments
+
+admin_comments:
+    pattern: /admin/comments
+    defaults: { _controller: AdminBundle:Comments:index }
+
+admin_comments_delete:
+    pattern: /admin/comments/delete/{id}
+    defaults: { _controller: AdminBundle:Comments:delete }
+
+########################################################
+
+#Admin Profile
+
+admin_profile:
+    pattern: /admin/profile
+    defaults: { _controller: AdminBundle:Profile:index }
+
+admin_profile_edit:
+    pattern: /admin/profile/edit/{id}
+    defaults: { _controller: AdminBundle:Profile:edit }
+
+########################################################
+
+
 #Admin Post
+
 admin_post:
     pattern: /admin/post
     defaults: { _controller: AdminBundle:Post:index }
@@ -43,6 +80,7 @@ admin_post_create_comment:
 
 
 #Admin User
+
 admin_user:
     pattern:  /admin/users
     defaults: { _controller: AdminBundle:User:users }
@@ -63,6 +101,7 @@ admin_user_create:
 
 
 #Admin Login
+
 admin_user_login:
   pattern:  /login
   defaults: { _controller: AdminBundle:Login:login }
@@ -79,6 +118,7 @@ admin_user_logout:
 
 
 #Admin Register
+
 admin_user_register:
     pattern:  /register
     defaults: { _controller: AdminBundle:Register:register }

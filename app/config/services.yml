@@ -1,7 +1,8 @@
 parameters:
     author_manager.class: Blog\ModelBundle\Services\AuthorManager
-    post_manager.class: Blog\ModelBundle\Services\PostManager
-    user_manager.class: Blog\ModelBundle\Services\UserManager
+    post_manager.class:   Blog\ModelBundle\Services\PostManager
+    user_manager.class:   Blog\ModelBundle\Services\UserManager
+    is_active.class:     Blog\ModelBundle\Twig\Helpers\isActive
 
 services:
     author_manager:
@@ -19,3 +20,8 @@ services:
             class: %user_manager.class%
             arguments:
                 - @doctrine.orm.entity_manager
+
+    blog.twig.helper:
+        class: %is_active.class%
+        tags:
+            - { name: twig.extension }

@@ -1,6 +1,12 @@
-<h2>Edit Post</h2>
-<form id="edit-create-post">
-    <input type="text" value="{{ post.title }}" />
-    <textarea>{{ post.body }}</textarea>
-    <input class="button-add" type="submit" name="updatePost" value="Save"/>
-</form>
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <div id="content">
+        <h2>Edit Post</h2>
+        <form id="edit-create-post">
+            <input type="text" value="{{ post.title }}" />
+            <textarea>{{ post.body }}</textarea>
+            <input class="button-add" type="submit" name="updatePost" value="Save"/>
+        </form>
+    </div>
+{% endblock %}

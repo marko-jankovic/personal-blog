@@ -1,16 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'AdminBundle::layout.html.twig' %}
 
-{% block header %}
-    <div id="header" class="register-signin-header">
-        <a href="{{ path('admin_user_register') }}">Create an Account</a>
-        or
-        <a href="{{ path('admin_user_login') }}">Login</a>
-    </div>
-{% endblock %}
-
-{% block container %}
-    {{ include('AdminBundle::_shared/admin_navigation.html.twig') }}
-
+{% block content %}
     <div id="content">
 
         {% if user %}
@@ -29,5 +19,3 @@
     </div>
 
 {% endblock %}
-
-{% block footer %}{% endblock %}

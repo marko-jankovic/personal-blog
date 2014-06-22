@@ -30,7 +30,8 @@ a {
 }
 
 #wrapper {
-    /*max-width: 980px;*/
+    min-height: 610px;
+    position: relative;
     margin: 15px;
     overflow: hidden;
     background: #fff;
@@ -86,7 +87,10 @@ a {
 #navigation {
     width: 20%;
     box-shadow: 1px 0 0 #ededed;
-    float: left;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: #FDFDFD;
 
     h1 {
         padding: 20px 15px 20px 40px;
@@ -110,7 +114,6 @@ a {
         display: block;
         text-decoration: none;
         color: #3B73AF;
-        background: #FDFDFD;
         @include font-size(14px);
 
         &:hover {
@@ -145,6 +148,7 @@ a {
     width: 80%;
     float: left;
     position: relative;
+    margin-left: 20%;
 
     h2 {
         font-weight: 400;
@@ -232,7 +236,7 @@ a {
       margin: 0 10px;
 
       &:hover {
-          background: #EBF2F9;
+//          background: #EBF2F9;
       }
   }
 

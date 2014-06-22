@@ -9,7 +9,6 @@ namespace Blog\AdminBundle\Controller;
 
 use Blog\ModelBundle\Form\Type\CommentType;
 use Blog\ModelBundle\Services\PostManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

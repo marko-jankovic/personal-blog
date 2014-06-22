@@ -2,11 +2,10 @@
     <h1>Settings</h1>
     <ul>
         <li>
-            <a href="">
-                General
+            <a href="{{ path('admin_profile') }}" {% if app.request.get('_route') == 'admin_profile' %} class="active"{% endif %}>
+                Profile
             </a>
         </li>
-
         {% if is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{ path('admin_user') }}" {% if app.request.get('_route') == 'admin_user' %} class="active"{% endif %}>
@@ -21,8 +20,21 @@
             </a>
         </li>
 
-        <li><a href="">Categories</a></li>
+        <li>
+            <a href="{{ path('admin_category') }}" {% if app.request.get('_route') == 'admin_category' %} class="active"{% endif %}>
+                Categories
+            </a>
+        </li>
 
-        <li><a href="">Comments</a></li>
+        <li>
+            <a href="{{ path('admin_comments') }}" {% if app.request.get('_route') == 'admin_comments' %} class="active"{% endif %}>
+                Comments
+            </a>
+        </li>
+        <li>
+            <a href="">
+                General
+            </a>
+        </li>
     </ul>
 </div>

@@ -9,10 +9,51 @@
 
 {% block container %}
 
-    {{ include('AdminBundle::_shared/admin_navigation.html.twig') }}
+    <div id="navigation">
+        <h1>Settings</h1>
+        <ul>
+            <li>
+                <a href="{{ path('admin_profile') }}" {{ isActive(app, "admin_profile") }}>
+                    Profile
+                </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_user') }}" {{ isActive(app, "admin_user") }}>
+                        Users
+                    </a>
+                </li>
+            {% endif %}
+
+            <li>
+                <a href="{{ path('admin_post') }}" {{ isActive(app, "admin_post") }}>
+                    Posts
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('admin_category') }}" {{ isActive(app, "admin_category") }}>
+                    Categories
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('admin_comments') }}" {{ isActive(app, "admin_comments") }}>
+                    Comments
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    General
+                </a>
+            </li>
+        </ul>
+    </div>
 
     {% block content %}
-        <div id="content">Default</div>
+        <div id="content">
+            Default
+        </div>
     {% endblock %}
 
 
