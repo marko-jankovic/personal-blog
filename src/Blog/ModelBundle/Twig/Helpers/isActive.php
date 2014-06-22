@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: markojankovic
  * Date: 6/22/14
  * Time: 5:34 PM
@@ -24,6 +23,14 @@ class isActive extends \Twig_Extension {
     }
 
     /**
+     * isActive helper
+     * Check is current route and add CSS class 'active'
+     *
+     * @param object $app
+     * @param string $routeName
+     *
+     * @return string|boolen class="active" | false
+     *
      */
     public function isActive($app, $routeName)
     {
