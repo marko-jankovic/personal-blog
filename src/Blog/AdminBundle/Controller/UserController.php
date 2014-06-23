@@ -46,9 +46,34 @@ class UserController extends Controller {
     }
 
     /**
+     */
+    public function updateAction($id)
+    {
+        var_dump("update", $id);
+        die();
+    }
+
+
+    /**
      * @Template("AdminBundle:User:user.html.twig")
      */
     public function editAction($id)
+    {
+
+        $user = $this->getUserManager()
+                     ->findOneBy(array('id' => $id));
+
+
+        return array(
+            'actionName' => 'edit-user',
+            'user'       => $user
+        );
+    }
+
+    /**
+     * @Template("AdminBundle:User:account.html.twig")
+     */
+    public function accountAction($id)
     {
 
         $user = $this->getUserManager()
@@ -72,7 +97,7 @@ class UserController extends Controller {
     }
 
     /**
-     * Get Post manager
+     * Get User manager
      *
      * @return UserManager
      */

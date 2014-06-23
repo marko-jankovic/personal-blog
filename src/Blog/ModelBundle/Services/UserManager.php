@@ -20,7 +20,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class UserManager
 {
     private $em;
-    private $formFactory;
 
     /**
      * @param EntityManager $em

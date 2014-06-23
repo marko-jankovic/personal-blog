@@ -22,6 +22,10 @@ admin_category:
     pattern: /admin/category
     defaults: { _controller: AdminBundle:Category:index }
 
+admin_category_create:
+    pattern: /admin/category/new
+    defaults: { _controller: AdminBundle:Category:create }
+
 ########################################################
 
 
@@ -43,9 +47,9 @@ admin_profile:
     pattern: /admin/profile
     defaults: { _controller: AdminBundle:Profile:index }
 
-admin_profile_edit:
-    pattern: /admin/profile/edit/{id}
-    defaults: { _controller: AdminBundle:Profile:edit }
+admin_profile_update:
+    pattern: /admin/profile/update
+    defaults: { _controller: AdminBundle:Profile:update }
 
 ########################################################
 
@@ -89,6 +93,14 @@ admin_user_edit:
     pattern:  /admin/user/edit/{id}
     defaults: { _controller: AdminBundle:User:edit }
 
+admin_user_update:
+    pattern:  /admin/user/update/{id}
+    defaults: { _controller: AdminBundle:User:update }
+
+admin_user_account:
+    pattern:  /admin/account/{id}
+    defaults: { _controller: AdminBundle:User:account }
+
 admin_user_delete:
   pattern:  /admin/user/delete/{id}
   defaults: { _controller: AdminBundle:User:delete }
@@ -126,5 +138,14 @@ admin_user_register:
 admin_user_forgot:
     pattern:  /forgot
     defaults: { _controller: AdminBundle:Forgot:forgot }
+
+########################################################
+
+#Admin Settings
+
+admin_settings:
+    pattern: /admin/settings
+    defaults: { _controller: AdminBundle:Settings:index }
+
 
 ########################################################

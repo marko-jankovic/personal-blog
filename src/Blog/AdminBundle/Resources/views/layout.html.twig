@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block container %}
-
     <div id="navigation">
         <h1>Settings</h1>
         <ul>
@@ -21,6 +20,12 @@
                 <li>
                     <a href="{{ path('admin_user') }}" {{ isActive(app, "admin_user") }}>
                         Users
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('admin_user_account', {id: getUserId(app)}) }}" {{ isActive(app, "admin_user") }}>
+                        Account
                     </a>
                 </li>
             {% endif %}
@@ -43,8 +48,8 @@
                 </a>
             </li>
             <li>
-                <a href="">
-                    General
+                <a href="{{ path('admin_settings') }}" {{ isActive(app, "admin_settings") }}>
+                    Settings
                 </a>
             </li>
         </ul>

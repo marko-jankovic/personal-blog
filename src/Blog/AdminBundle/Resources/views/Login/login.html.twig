@@ -1,5 +1,15 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
+
+{% block header %}
+    <div id="header" class="register-signin-header">
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
+        or
+        <a href="{{ path('admin_user_login') }}">Login</a>
+    </div>
+{% endblock %}
+
+
 {% block container %}
 
     <form id="login-form" name="login" method="post" action="{{ path('admin_user_check') }}">

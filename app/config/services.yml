@@ -2,7 +2,9 @@ parameters:
     author_manager.class: Blog\ModelBundle\Services\AuthorManager
     post_manager.class:   Blog\ModelBundle\Services\PostManager
     user_manager.class:   Blog\ModelBundle\Services\UserManager
+
     is_active.class:     Blog\ModelBundle\Twig\Helpers\isActive
+    get_user_id.class:   Blog\ModelBundle\Twig\Helpers\getUserId
 
 services:
     author_manager:
@@ -21,7 +23,12 @@ services:
             arguments:
                 - @doctrine.orm.entity_manager
 
-    blog.twig.helper:
+    isActive.twig.helper:
         class: %is_active.class%
         tags:
             - { name: twig.extension }
+
+    getUserId.twig.helper:
+            class: %get_user_id.class%
+            tags:
+                - { name: twig.extension }

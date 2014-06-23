@@ -1,28 +1,41 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
+{% block header %}
+    <div id="header" class="register-signin-header">
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
+        or
+        <a href="{{ path('admin_user_login') }}">Login</a>
+    </div>
+{% endblock %}
+
 {% block container %}
 
-    <form id="login-form" name="login" method="post">
+    <form id="register-form" name="register" method="post" action="">
         <h2>Register</h2>
+
+        {{ form_errors(form) }}
+
         <fieldset>
-            <label for="username">Username *</label>
-            <input type="text" placeholder="Username" name="usernamee" id="username"/>
+            {{ form_label(form.username, null, {'label': 'Username*'}) }}
+            {{ form_widget(form.username, {'attr': {'placeholder': 'Username' }}) }}
         </fieldset>
 
         <fieldset>
-            <label for="email">Email Address *</label>
-            <input type="email" placeholder="Email Address" name="email" id="email" />
+            {{ form_label(form.email, null, {'label': 'Email*'}) }}
+            {{ form_widget(form.email, {'attr': {'placeholder': 'Email' }}) }}
         </fieldset>
 
         <fieldset>
-            <label for="password">Password (6 characters minimum) *</label>
-            <input type="password" placeholder="Password" name="password" id="password" />
+            {{ form_label(form.plainPassword, null, {'label': 'Password*'}) }}
+            {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Password (6 characters minimum)' }}) }}
         </fieldset>
 
         <fieldset>
-            <label for="confirm-password">Confirm Password *</label>
-            <input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password"/>
+            {{ form_label(form.plainPassword, null, {'label': 'Confirm Password*'}) }}
+            {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirm Password' }}) }}
         </fieldset>
+
+        {{ form_rest(form) }}
 
         <button type="submit">Register</button>
     </form>

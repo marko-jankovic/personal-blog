@@ -14,13 +14,23 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 /**
- * Class RegisterFormType
- * l
- *
- * @package Yoda\UserBundle\Form
+ * Class RegisterType
  */
 class RegisterType extends AbstractType
 {
+
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('username', 'text', array(
+                'pattern' => '[a-zA-Z0-9]+'
+            ))
+            ->add('email', 'email')
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password'
+            ));
+    }
+
     /**
      * Returns the name of this type.
      *
@@ -31,24 +41,13 @@ class RegisterType extends AbstractType
         return 'user_register';
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('username', 'text', array(
-            'required' => false,
-            'pattern'  => '[a-zA-Z0-9]+',
-            'attr'     => array('class' => 'username-field-custom')
-        ))
-                ->add('email', 'email')
-                ->add('plainPassword', 'repeated', array('type' => 'password'))
-                ->getForm();
-    }
-
+    /**
+     * Prepopulate forme with current user data
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Blog\ModelBundle\Entity\User'
         ));
     }
-
-
 }

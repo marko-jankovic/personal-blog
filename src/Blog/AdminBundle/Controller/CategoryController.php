@@ -16,4 +16,12 @@ class CategoryController extends Controller
     {
         return array('actionName' => 'category');
     }
+
+    /**
+     * @Template("AdminBundle:Category:new.html.twig")
+     */
+    public function createAction()
+    {
+        return array('actionName' => 'create-category');
+    }
 }

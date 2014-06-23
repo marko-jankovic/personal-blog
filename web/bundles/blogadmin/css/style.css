@@ -895,7 +895,8 @@ a:hover {
   height: 300px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\000032}}
+#register-form,
 #login-form {
   overflow: hidden;
   background: white;
@@ -915,7 +916,8 @@ a:hover {
   -moz-box-shadow: #d4d4d4 0 1px 3px;
   box-shadow: #d4d4d4 0 1px 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000314}}
+#register-form h2,
 #login-form h2 {
   margin: 0 0 15px 0;
   border: 1px #3B73AF;
@@ -928,16 +930,18 @@ a:hover {
   font-size: 22px;
   font-size: 2.2rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000326}}
+#register-form fieldset,
 #login-form fieldset {
   padding: 0px 25px 12px 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000330}}
+#register-form label,
 #login-form label {
   color: #444;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000335}}
 .register-signin-header {
   overflow: hidden;
   padding: 12px;
@@ -946,7 +950,7 @@ a:hover {
   text-align: right;
   color: #999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000343}}
 .register-signin-header a {
   color: #CACACA;
   font-size: 13px;
@@ -954,12 +958,12 @@ a:hover {
   margin: 0 7px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000350}}
 .asterisk-logo {
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000357}}
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -973,7 +977,7 @@ textarea {
   border: 1px #ddd solid;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000367}}
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
@@ -981,7 +985,7 @@ textarea:focus {
   background: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000372}}
 button {
   width: 140px;
   color: white;
@@ -1005,12 +1009,12 @@ button {
   margin: 15px auto auto;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000384}}
 button:disabled {
   opacity: 0.7;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000389}}
 .error-message {
   margin-bottom: 20px;
   padding: 15px;
@@ -1020,13 +1024,13 @@ button:disabled {
   color: #B94A48;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\0000398}}
 #login_keep_me {
   float: left;
   margin: 2px 5px 0 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003103}}
 .register-signin-checkbox {
   color: #9B9B9B;
   font-size: 12px;
@@ -1034,7 +1038,7 @@ button:disabled {
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/markojankovic\/workspace\/private\/personal-blog\/web\/bundles\/blogadmin\/css\/sass\/modules\/_login\.scss}line{font-family:\00003109}}
 .forgotPassword {
   float: right;
   font-weight: 400;

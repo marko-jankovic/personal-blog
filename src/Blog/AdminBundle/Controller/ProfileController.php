@@ -23,4 +23,10 @@ class ProfileController extends Controller {
     {
         return array('actionName' => 'profile');
     }
+
+
+    public function updateAction()
+    {
+        return array('actionName' => 'update-profile');
+    }
 }

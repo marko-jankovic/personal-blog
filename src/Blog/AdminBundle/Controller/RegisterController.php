@@ -7,8 +7,11 @@
 
 namespace Blog\AdminBundle\Controller;
 
+use Blog\ModelBundle\Entity\User;
+use Blog\ModelBundle\Form\Type\RegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class RegisterController extends Controller {
 
@@ -17,22 +20,58 @@ class RegisterController extends Controller {
      *
      * @Template()
      */
-    public function registerAction()
+    public function registerAction(Request $request)
     {
 
-        //        $user = new User();
-        //
-        //        $user->setUsername("Marko")
-        //             ->setEmail("markj@vast.com")
-        //             ->setPassword("123456");
-        //
-        //        // get entity manager
-        //        $em = $this->getDoctrine()->getManager();
-        //        $em->persist($user);
-        //        $em->flush();
+        $form = $this->createForm(new RegisterType());
 
-        $actionName = 'register';
+        if($request->isMethod('POST'))
+        {
 
-        return array('actionName' => $actionName);
+            $form->bind($request);
+
+            if ($form->isValid()) {
+
+                $data = $form->getData();
+
+                $user = new User();
+                $user->setUsername($data['username']);
+                $user->setPassword($this->encodePassword($user, $data['plainPassword']));
+                $user->setEmail($data['email']);
+
+                var_dump($user);
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($user);
+                $manager->flush();
+
+                return $this->redirect($this->generateUrl('admin_user_login'));
+            }
+        }
+
+        return array(
+            'actionName' => 'register',
+            'form' => $form->createView()
+        );
+    }
+
+    private function encodePassword($user, $plainPassword)
+    {
+        $encoder = $this->container
+                            ->get('security.encoder_factory')
+                            ->getEncoder($user);
+
+
+        return $encoder->encodePassword($plainPassword, $user->getSalt());
+    }
+
+    /**
+     * Get User manager
+     *
+     * @return UserManager
+     */
+    private function getUserManager()
+    {
+        return $this->get('userManager');
     }
 }
