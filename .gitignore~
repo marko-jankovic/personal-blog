@@ -7,7 +7,3 @@ app/logs/*
 */cache/*
 *.sass-cache
 /web/bundles*
-.idea/
-.metadata/
-app/DoctrineMigrations/
-composer.phar
