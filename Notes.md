@@ -37,10 +37,24 @@
 
 		- host		/private/etc/hosts (dodavanje novog domena)
 
+			127.0.0.1	webdevsblog.localhost
+
+
 		- httpd-vhosts.conf		/private/etc/apache2/extra (dodavanje putanje do projekta)
+		
+			<VirtualHost *:80>
+			   DocumentRoot "/Users/markojankovic/workspace/private/personal-blog/web"
+			   ServerName webdevsblog.localhost
+			</VirtualHost>
 
+		
 		- httpd.conf 			/private/etc/apache2/httpd.conf (DocumentRoot, Directory)
+		
+			DocumentRoot "/Users/markojankovic/workspace"
+			
+			<Directory "/Users/markojankovic/workspace">
 
+		
 		- subl .bash_profile
 
 		- restart apach-a (sudo apachectl restart)
