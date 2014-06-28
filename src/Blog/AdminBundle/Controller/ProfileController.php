@@ -21,6 +21,12 @@ class ProfileController extends Controller {
      */
     public function indexAction()
     {
+       $userDetails = $this->getDoctrine()
+             ->getRepository('ModelBundle:UserDetails')
+             ->findOneBy(array('id' => 1));
+
+
+
         return array('actionName' => 'profile');
     }
 
