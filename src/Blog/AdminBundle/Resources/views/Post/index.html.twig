@@ -12,8 +12,8 @@
                         <a href="{{ path('admin_post_show', {'slug': post.slug }) }}">{{ post.title }}</a>
                     </h3>
 
-                    <a href="{{ path('admin_author_show', {'slug': post.author.slug}) }}">
-                        {{ post.author.name }}
+                    <a href="/">
+                       {{ post.user.username }}
                     </a>
                 </header>
                 <p class="entry">{{ post.body | truncate(150) }}</p>

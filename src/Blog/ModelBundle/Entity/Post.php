@@ -50,13 +50,13 @@ class Post extends TimeStamp
     private $body;
 
     /**
-     * @var Author
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="Author", inversedBy="posts")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank
      */
-    private $author;
+    private $user;
 
     /**
      * @var ArrayCollection
@@ -157,27 +157,27 @@ class Post extends TimeStamp
     }
 
     /**
-     * Set author
+     * Set user
      *
-     * @param \Blog\ModelBundle\Entity\Author $author
+     * @param \Blog\ModelBundle\Entity\User $user
      *
      * @return Post
      */
-    public function setAuthor(Author $author)
+    public function setUser(User $user)
     {
-        $this->author = $author;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get author
+     * Get user
      *
-     * @return \Blog\ModelBundle\Entity\Author
+     * @return \Blog\ModelBundle\Entity\User
      */
-    public function getAuthor()
+    public function getUser()
     {
-        return $this->author;
+        return $this->user;
     }
 
     /**

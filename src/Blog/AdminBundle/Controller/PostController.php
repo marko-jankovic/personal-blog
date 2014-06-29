@@ -102,4 +102,4 @@ class PostController extends Controller
         return $this->get('postManager');
     }
 
-} 
+}

@@ -83,6 +83,13 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $email;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="user", cascade={"remove"})
+     */
+    private $posts;
+
 
     public function __construct()
     {
@@ -340,5 +347,40 @@ class User implements AdvancedUserInterface, Serializable
     public function isCredentialsNonExpired()
     {
         return true;
+    }
+
+
+     /**
+     * Add posts
+     *
+     * @param \Blog\ModelBundle\Entity\Post $posts
+     *
+     * @return post
+     */
+    public function addPost(Post $posts)
+    {
+        $this->posts[] = $posts;
+
+        return $this;
+    }
+
+    /**
+     * Remove posts
+     *
+     * @param \Blog\ModelBundle\Entity\Post $posts
+     */
+    public function removePost(Post $posts)
+    {
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }
