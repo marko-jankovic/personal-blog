@@ -38,7 +38,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         $user = $this->findOneByUsernameOrEmail($username);
 
         if (!$user) {
-            throw new UsernameNotFoundException('No user with this username/email found!');
+            throw new UsernameNotFoundException('No user with ' .$username. ' username/email found!');
         }
 
         return $user;

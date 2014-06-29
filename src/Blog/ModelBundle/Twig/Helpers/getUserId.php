@@ -36,4 +36,4 @@ class getUserId extends \Twig_Extension {
     {
         return 'get_user_id';
     }
-} 
+}
