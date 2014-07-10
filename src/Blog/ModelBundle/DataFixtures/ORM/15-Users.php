@@ -26,7 +26,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
      */
     public function getOrder()
     {
-        return 20;
+        return 15;
     }
 
     /**

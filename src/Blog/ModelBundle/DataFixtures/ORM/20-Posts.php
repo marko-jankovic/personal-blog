@@ -25,7 +25,7 @@ class Posts extends AbstractFixture implements OrderedFixtureInterface{
      */
     public function getOrder()
     {
-        return 15;
+        return 20;
     }
 
     /**

@@ -21,7 +21,7 @@ class Comments extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 20;
+        return 25;
     }
 
     /**
