@@ -96,7 +96,7 @@ class UserDetails extends TimeStamp
     /**
      * Set full name
      *
-     * @param string $slug
+     * @param string $fullName
      *
      * @return string
      */

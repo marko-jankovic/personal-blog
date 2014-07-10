@@ -24,7 +24,8 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $posts = $this->getPostManager()->findAll();
+        $user = $this->getUser();
+        $posts  = $this->getPostManager()->findPosts($user);
 
         return array(
             'posts'         => $posts,

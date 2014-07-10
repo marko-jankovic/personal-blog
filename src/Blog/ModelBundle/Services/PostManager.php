@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class PostManager
 {
-    private $em;
+    public $em;
     private $formFactory;
 
     /**
@@ -42,6 +42,24 @@ class PostManager
     public function findAll()
     {
         $posts = $this->em->getRepository('ModelBundle:Post')->findAll();
+
+        return $posts;
+    }
+
+    /**
+     * Find all posts for a given author
+     *
+     * @param User $user
+     *
+     * @return array
+     */
+    public function findPosts($user)
+    {
+        $posts = $this->em->getRepository('ModelBundle:Post')->findBy(
+              array(
+                  'user' => $user
+              )
+        );
 
         return $posts;
     }
