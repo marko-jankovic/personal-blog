@@ -4,6 +4,7 @@ namespace Blog\ModelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Serializable;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -61,6 +62,14 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $salt;
 
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"username"}, unique=false)
+     * @ORM\Column(length=255)
+     */
+    private $slug;
 
     /**
      * @var bool
@@ -350,7 +359,32 @@ class User implements AdvancedUserInterface, Serializable
     }
 
 
-     /**
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return User
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+
+    /**
      * Add posts
      *
      * @param \Blog\ModelBundle\Entity\Post $posts
