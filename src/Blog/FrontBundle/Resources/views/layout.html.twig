@@ -6,13 +6,13 @@
         <p style="float: left;">Marko Jankovic Blog</p>
 
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <a class="signout" href="{{ path('admin_security_logout') }}">Logout</a>
+            <a class="signout" href="{{ path('admin_user_logout') }}">Logout</a>
         {% else %}
-            <a href="{{ path('admin_security_login') }}">Sign In</a>
+            <a href="{{ path('admin_user_login') }}">Login</a>
         {% endif %}
 
         or
-        <a href="{{ path('admin_security_register') }}">Register</a>
+        <a href="{{ path('admin_user_register') }}">Create an Account</a>
     </div>
 {% endblock %}
 
