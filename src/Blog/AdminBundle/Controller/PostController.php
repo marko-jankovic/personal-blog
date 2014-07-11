@@ -27,6 +27,14 @@ class PostController extends Controller
         $user = $this->getUser();
         $posts  = $this->getPostManager()->findPosts($user);
 
+        if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            $posts = $this->getPostManager()->findAll();
+        }
+        else {
+            $posts = $this->getPostManager()->findPosts($user);
+        }
+
         return array(
             'posts'         => $posts,
             'actionName'    => "showPosts"
