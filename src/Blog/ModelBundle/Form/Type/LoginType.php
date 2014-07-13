@@ -21,12 +21,7 @@ class LoginType extends AbstractType
             ))
             ->add('_password', 'password', array(
                  'label' => 'Password: *'
-            ))
-            ->add('_remember_me', 'checkbox', array(
-                'label'    => 'Keep me signed in',
-                'required' => false
             ));
-
     }
 
     public function getName()

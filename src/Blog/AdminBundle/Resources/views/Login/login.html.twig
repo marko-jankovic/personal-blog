@@ -42,8 +42,8 @@
         </fieldset>
 
         <fieldset>
-            {{ form_label(form._remember_me, null, {'label_attr': {'class': 'register-signin-checkbox' }}) }}
-            {{ form_widget(form._remember_me) }}
+            <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+            <label for="remember_me">Keep me logged in</label>
 
             <a href="{{ path('admin_user_forgot') }}" class="forgotPassword">Forgot password?</a>
         </fieldset>

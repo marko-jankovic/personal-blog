@@ -28,13 +28,9 @@ security:
                 target: admin_user_login
 
             remember_me:
-                key: MiPassphrase
-                lifetime: 1800
-                path: /.*
-                domain: ~
+                key: random-key-2014
             security: true
             anonymous: ~
-
 
         front_area:
             pattern: ^/
@@ -42,5 +38,5 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/settings, roles: ROLE_USER }
-        - { path: ^/settings/users*, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_USER }
+        - { path: ^/admin/users*, roles: ROLE_ADMIN }

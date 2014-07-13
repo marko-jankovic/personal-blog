@@ -3,7 +3,7 @@
 
 {% block header %}
     <div id="header" class="register-signin-header">
-        <a class="signout" href="{{ path('admin_user_logout') }}">Log Out</a>
+        <a class="signout" href="{{ path('admin_user_logout') }}">Log Out: {{ app.user.username }}</a>
     </div>
 {% endblock %}
 
