@@ -13,7 +13,15 @@
 {% block container %}
 
     <form id="login-form" name="login" method="post" action="{{ path('admin_user_check') }}">
-        <h2 {% if error %}class="no-margin"{% endif %}>Sign In</h2>
+        <h2 {% if (error or app.session.flashBag.has('success')) %}class="no-margin"{% endif %}>Sign In</h2>
+
+        {% if app.session.flashBag.has('success') %}
+            <div class="success-message">
+                {% for message in app.session.flashBag.get('success') %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
 
         {% if error %}
         <p class="error-message">

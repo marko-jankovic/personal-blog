@@ -44,6 +44,10 @@ class RegisterController extends Controller {
                 $manager->persist($user);
                 $manager->flush();
 
+                $request->getSession()
+                    ->getFlashBag()
+                    ->add('success', 'You have successfully registered!');
+
                 return $this->redirect($this->generateUrl('admin_user_login'));
             }
             else {
