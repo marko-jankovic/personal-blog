@@ -87,12 +87,16 @@ button {
 }
 
 .error-message {
-  margin-bottom: 20px;
-  padding: 15px;
-  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  list-style: inside;
   background-color: #F2DEDE;
   border-color: #EBCCD1;
   color: #B94A48;
+
+  li {
+      margin-left: 10px;
+  }
 }
 
 #login_keep_me {

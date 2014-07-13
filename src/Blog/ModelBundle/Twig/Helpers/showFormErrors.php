@@ -21,26 +21,34 @@ class showFormErrors extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'fieldError' => new \Twig_Function_Method($this, 'fieldError', array('is_safe' => array('html')))
+            'showFormError' => new \Twig_Function_Method($this, 'showFormError', array('is_safe' => array('html')))
         );
     }
 
-    public function fieldError($errors, $type)
+    public function showFormError($errors)
     {
-        $type = explode(".", $type);
 
-        if(count($type) > 1) {
+        if (empty($errors)) {
+            return false;
+        }
 
-            if (isset($errors[$type[0]][$type[1]])) {
-                return '<p class="error-message">' . $errors[$type[0]][$type[1]] . '</p>';
+        $errorMessage = '<ul class="error-message">';
+
+        foreach($errors as $error) {
+
+            if(is_array($error)) {
+
+                foreach($error as $subError){
+                    $errorMessage .= '<li>'. $subError .'</li>';
+                }
+            }
+            else {
+                $errorMessage .= '<li>' . $error . '</li>';
             }
         }
-        else {
-            if (isset($errors[$type[0]])) {
-                return '<p class="error-message">' . $errors[$type[0]] . '</p>';
-            }
-        }
-        return false;
+        $errorMessage .= '</ul>';
+
+        return $errorMessage;
     }
 
     /**

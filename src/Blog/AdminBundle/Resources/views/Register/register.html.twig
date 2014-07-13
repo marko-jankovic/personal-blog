@@ -10,17 +10,17 @@
 
 {% block container %}
 
-    <form id="register-form" name="register" method="post" action="">
-        <h2>Register</h2>
+    <form id="register-form" name="register" method="post" action="" novalidate>
+        <h2 {% if errors %}class="no-margin"{% endif %}>Register</h2>
+
+        {{ showFormError(errors)}}
 
         <fieldset>
-            {{ fieldError(errors, 'username') }}
             {{ form_label(form.username, 'Username*') }}
             {{ form_widget(form.username, {'attr': {'placeholder': 'Username' }}) }}
         </fieldset>
 
         <fieldset>
-            {{ fieldError(errors, 'email') }}
             {{ form_label(form.email, 'Email*') }}
             {{ form_widget(form.email, {'attr': {'placeholder': 'Email' }}) }}
         </fieldset>
@@ -31,7 +31,6 @@
         </fieldset>
 
         <fieldset>
-            {{ fieldError(errors, 'plainPassword.first') }}
             {{ form_label(form.plainPassword, 'Confirm Password*') }}
             {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirm Password' }}) }}
         </fieldset>

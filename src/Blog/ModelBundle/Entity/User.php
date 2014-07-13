@@ -32,6 +32,13 @@ class User implements AdvancedUserInterface, Serializable
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="Username is required!")
+     *
+     * @Assert\Regex(
+     * pattern="/^[a-zA-Z0-9]+$/i",
+     * message="Username must be alphanumeric"
+     * )
+     *
      * @ORM\Column(name="username", type="string", length=100)
      */
     private $username;
@@ -47,10 +54,10 @@ class User implements AdvancedUserInterface, Serializable
     /**
      * @var string
      *
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message = "Password is required")
      * @Assert\Regex(
-     * pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
-     * message="Your password should consist of small and big letters and numbers"
+     * pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s){6,15}$/",
+     * message="Password must be at least 6 characters long and consist of small and big letters and numbers"
      * )
      */
     private $plainPassword;
@@ -87,6 +94,9 @@ class User implements AdvancedUserInterface, Serializable
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Email is required!")
+     * @Assert\Email(message="Insert valid Email adress!")
      *
      * @ORM\Column(name="email", type="string", length=100, unique=true)
      */
