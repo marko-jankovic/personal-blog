@@ -24,6 +24,7 @@ class RegisterController extends Controller {
     {
 
         $form = $this->createForm(new RegisterType());
+        $errors = array();
 
         if($request->isMethod('POST'))
         {
@@ -33,13 +34,11 @@ class RegisterController extends Controller {
             if ($form->isValid()) {
 
                 $data = $form->getData();
-
                 $user = new User();
-                $user->setUsername($data['username']);
-                $user->setPassword($this->encodePassword($user, $data['plainPassword']));
-                $user->setEmail($data['email']);
 
-                var_dump($user);
+                $user->setUsername($data->getUsername());
+                $user->setPassword($this->encodePassword($user, $data->getPlainPassword()));
+                $user->setEmail($data->getEmail());
 
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($user);
@@ -47,10 +46,14 @@ class RegisterController extends Controller {
 
                 return $this->redirect($this->generateUrl('admin_user_login'));
             }
+            else {
+                $errors = $this->get('form_errors')->getArray($form);
+            }
         }
 
         return array(
             'actionName' => 'register',
+            'errors' => $errors,
             'form' => $form->createView()
         );
     }

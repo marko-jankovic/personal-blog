@@ -13,25 +13,26 @@
     <form id="register-form" name="register" method="post" action="">
         <h2>Register</h2>
 
-        {{ form_errors(form) }}
-
         <fieldset>
-            {{ form_label(form.username, null, {'label': 'Username*'}) }}
+            {{ fieldError(errors, 'username') }}
+            {{ form_label(form.username, 'Username*') }}
             {{ form_widget(form.username, {'attr': {'placeholder': 'Username' }}) }}
         </fieldset>
 
         <fieldset>
-            {{ form_label(form.email, null, {'label': 'Email*'}) }}
+            {{ fieldError(errors, 'email') }}
+            {{ form_label(form.email, 'Email*') }}
             {{ form_widget(form.email, {'attr': {'placeholder': 'Email' }}) }}
         </fieldset>
 
         <fieldset>
-            {{ form_label(form.plainPassword, null, {'label': 'Password*'}) }}
+            {{ form_label(form.plainPassword, 'Password*') }}
             {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Password (6 characters minimum)' }}) }}
         </fieldset>
 
         <fieldset>
-            {{ form_label(form.plainPassword, null, {'label': 'Confirm Password*'}) }}
+            {{ fieldError(errors, 'plainPassword.first') }}
+            {{ form_label(form.plainPassword, 'Confirm Password*') }}
             {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirm Password' }}) }}
         </fieldset>
 

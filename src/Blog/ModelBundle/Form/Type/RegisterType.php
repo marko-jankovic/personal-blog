@@ -47,7 +47,9 @@ class RegisterType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Blog\ModelBundle\Entity\User'
+            'data_class' => 'Blog\ModelBundle\Entity\User',
+            'cascade_validation' => true,
+            'error_bubbling' => true
         ));
     }
 }
