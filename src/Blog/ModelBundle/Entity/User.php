@@ -50,13 +50,12 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $password;
 
-
     /**
      * @var string
      *
      * @Assert\NotBlank(message = "Password is required")
      * @Assert\Regex(
-     * pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s){6,15}$/",
+     * pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s){6,15}.*$/",
      * message="Password must be at least 6 characters long and consist of small and big letters and numbers"
      * )
      */
