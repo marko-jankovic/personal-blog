@@ -25,12 +25,13 @@ class PostController extends Controller
     public function indexAction()
     {
         $user = $this->getUser();
-        $posts  = $this->getPostManager()->findPosts($user);
 
+        // show all posts
         if($this->get('security.context')->isGranted('ROLE_ADMIN'))
         {
             $posts = $this->getPostManager()->findAll();
         }
+        // show only current user posts
         else {
             $posts = $this->getPostManager()->findPosts($user);
         }
