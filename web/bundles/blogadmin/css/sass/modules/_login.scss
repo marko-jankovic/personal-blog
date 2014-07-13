@@ -70,14 +70,14 @@ textarea {
 }
 
 button {
-	width: 140px;
+	width: 145px;
 	color: white;
-	@include background(linear-gradient(top, $base-button-filter-end-color, $base-button-filter-start-color));
+	background: #7ea842;
 	@include box-shadow(#777 0px 0px 2px 1px);
 	@include border-radius(6px);
 	@include font-size(15px);
 	border: 2px #fff solid;
-	line-height: 30px;
+	line-height: 35px;
 	margin: 15px auto auto;
 	display: block;
 
