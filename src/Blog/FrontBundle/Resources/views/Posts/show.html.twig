@@ -8,8 +8,8 @@
         <article class="post">
             <header>
                 <span class="status">PUBLISHED</span> by
-                <a href="{{ path('front_author_show', {'slug': post.author.slug}) }}">
-                    {{ post.author.name }}
+                <a href="{{ path('front_author_show', {'slug': post.user.slug}) }}">
+                    {{ post.user.username }}
                 </a>
                 <time datetime="{{ post.createdAt | date('c') }}">
                     ({{ post.createdAt | date }})

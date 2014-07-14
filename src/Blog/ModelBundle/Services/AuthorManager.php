@@ -7,7 +7,7 @@
 
 namespace Blog\ModelBundle\Services;
 
-use Blog\ModelBundle\Entity\Author;
+use Blog\ModelBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -37,7 +37,7 @@ class AuthorManager
      */
     public function findBySlug($slug)
     {
-        $author = $this->em->getRepository('ModelBundle:Author')->findOneBy(
+        $author = $this->em->getRepository('ModelBundle:User')->findOneBy(
            array(
                'slug' => $slug
            )
@@ -53,15 +53,15 @@ class AuthorManager
     /**
      * Find all posts for a given author
      *
-     * @param Author $author
+     * @param User $user
      *
      * @return array
      */
-    public function findPosts(Author $author)
+    public function findPosts(User $user)
     {
         $posts = $this->em->getRepository('ModelBundle:Post')->findBy(
           array(
-              'author' => $author
+              'user' => $user
           )
         );
 
