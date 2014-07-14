@@ -52,7 +52,7 @@ class Post extends TimeStamp
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts", cascade={"remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank
      */
