@@ -13,6 +13,7 @@ use Blog\ModelBundle\Services\PostManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostsController extends Controller
 {
@@ -68,16 +69,21 @@ class PostsController extends Controller
      * Show a post
      *
      * @param $slug
+     * @param $_format
      *
      * @return array
      *
      * @Template()
      */
-    public function showAction($slug)
+    public function showAction($slug, $_format)
     {
         $post = $this->getPostManager()->findBySlug($slug);
 
         $form = $this->createForm(new CommentType());
+
+        if($_format === 'json') {
+            return new Response(json_encode(array('mare' => 'car')));
+        }
 
         return array(
             'post'       => $post,
