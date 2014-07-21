@@ -34,6 +34,13 @@ class showFormErrors extends \Twig_Extension
 
         $errorMessage = '<ul class="error-message">';
 
+        // special case for Assert\True
+        if(!is_array($errors)) {
+            $errorMessage .= '<li>' . $errors . '</li></ul>';
+
+            return $errorMessage;
+        }
+
         foreach($errors as $error) {
 
             if(is_array($error)) {
