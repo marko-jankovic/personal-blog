@@ -72,9 +72,9 @@ admin_post_edit:
     pattern: /admin/post/edit/{id}
     defaults: { _controller: AdminBundle:Post:edit }
 
-admin_post_new:
-    pattern: /admin/post/new
-    defaults: { _controller: AdminBundle:Post:new }
+admin_post_create:
+    pattern: /admin/post/create
+    defaults: { _controller: AdminBundle:Post:create }
 
 admin_post_create_comment:
   pattern: /admin/{slug}/create-comment
@@ -108,6 +108,11 @@ admin_user_delete:
 admin_user_create:
   pattern:  /admin/user/create
   defaults: { _controller: AdminBundle:User:create }
+
+admin_user_status:
+    pattern:  /admin/user/status/{id}/{flag}
+    defaults: { _controller: AdminBundle:User:status }
+
 
 ########################################################
 
