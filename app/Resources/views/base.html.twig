@@ -10,7 +10,7 @@
         {% endblock %}
     </head>
 
-    <body class="{% block bodyClass %}{{actionName}}{% endblock %}">
+    <body id="{% block bodyClass %}{{actionName}}{% endblock %}">
 
         {% block header %}
         <div id="header">
@@ -20,7 +20,7 @@
         </div>
         {% endblock %}
 
-        <div id="wrapper">
+        <div class="wrapper">
 
             {% block container %}
             <div id="container"></div>

@@ -24,7 +24,7 @@
                 </li>
             {% else %}
                 <li>
-                    <a href="{{ path('admin_user_account', {id: getUserId(app)}) }}" {{ isActive(app, "admin_user") }}>
+                    <a href="{{ path('admin_user_edit', {id: getUserId(app)}) }}" {{ isActive(app, "admin_user") }}>
                         Account
                     </a>
                 </li>
@@ -56,12 +56,21 @@
     </div>
 
     {% block content %}
-        <div id="content">
+        <div class="content">
             Default
         </div>
     {% endblock %}
 
+    <script>
+        var confirmDelete = function (url) {
 
+            var answer = confirm("Da li ste sigurni?");
+            if (answer) {
+                location = url;
+            }
+        };
+    </script>
+    
 {% endblock %}
 
 {% block footer %}{% endblock %}

@@ -27,12 +27,12 @@
 
         <fieldset>
             {{ form_label(form.plainPassword, 'Password*') }}
-            {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Password (6 characters minimum)' }}) }}
+            {{ form_widget(form.plainPassword, {'attr': {'placeholder': 'Password (6 characters minimum)' }}) }}
         </fieldset>
 
         <fieldset>
-            {{ form_label(form.plainPassword, 'Confirm Password*') }}
-            {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirm Password' }}) }}
+            {{ form_label(form.confirmPassword, 'Confirm Password*') }}
+            {{ form_widget(form.confirmPassword, {'attr': {'placeholder': 'Confirm Password' }}) }}
         </fieldset>
 
         {{ form_rest(form) }}

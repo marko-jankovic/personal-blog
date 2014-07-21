@@ -29,7 +29,11 @@ a {
     }
 }
 
-#wrapper {
+.no-margin {
+    margin: 0 !important;
+}
+
+.wrapper {
     min-height: 610px;
     position: relative;
     margin: 15px;
@@ -37,17 +41,13 @@ a {
     background: #fff;
     @include box-shadow(#ccc 0 1px 5px);
     @include border-radius(3px);
-
-    .no-margin {
-      margin: 0;
-    }
 }
 
-.register,
-.forgot,
-.login {
+#register,
+#forgot,
+#login {
 
-    #wrapper {
+    .wrapper {
         border: none;
         background: none;
         margin: 40px auto auto;
@@ -144,7 +144,7 @@ a {
     }
 }
 
-#content {
+.content {
     width: 80%;
     float: left;
     position: relative;
@@ -157,34 +157,6 @@ a {
         letter-spacing: 0.4px;
         text-transform: uppercase;
         border-bottom: 1px #ededed solid;
-    }
-
-    ul {
-        padding: 12px 15px;
-    }
-
-    li {
-        height: 40px;
-        padding: 10px 15px;
-
-        &:nth-child(odd) {
-            background: #f2f5f6;
-        }
-
-        a {
-            margin-left: 12px;
-            @include font-size(13px);
-            text-decoration: underline;
-            text-transform: capitalize;
-        }
-
-        span {
-            float: left;
-        }
-
-        p {
-            text-align: right;
-        }
     }
 
     .button-add {
@@ -218,13 +190,49 @@ a {
     }
 }
 
+//temporary
+#users .content,
+#profile .content,
+#category .content,
+#settings .content,
+#comments .content {
+
+  ul {
+    padding: 12px 15px;
+  }
+
+  li {
+    height: 40px;
+    padding: 10px 15px;
+
+    &:nth-child(odd) {
+      background: #f2f5f6;
+    }
+
+    a {
+      margin-left: 12px;
+      @include font-size(13px);
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+
+    span {
+      float: left;
+    }
+
+    p {
+      text-align: right;
+    }
+  }
+}
+
 #post-comments {
   padding: 10px 25px 20px 25px;
   border-bottom: 1px solid #EDEDED;
   margin: 0 10px;
 }
 
-.showPosts {
+#showPosts {
 
   h3 {
       @include font-size(16px);
