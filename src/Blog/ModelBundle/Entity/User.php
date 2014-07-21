@@ -8,6 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Serializable;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -34,11 +35,6 @@ class User implements AdvancedUserInterface, Serializable
      *
      * @Assert\NotBlank(message="Username is required!")
      *
-     * @Assert\Regex(
-     * pattern="/^[a-zA-Z0-9]+$/i",
-     * message="Username must be alphanumeric"
-     * )
-     *
      * @ORM\Column(name="username", type="string", length=100)
      */
     private $username;
@@ -60,6 +56,9 @@ class User implements AdvancedUserInterface, Serializable
      * )
      */
     private $plainPassword;
+
+
+    protected $confirmPassword;
 
     /**
      * @var string
@@ -425,5 +424,29 @@ class User implements AdvancedUserInterface, Serializable
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    /**
+     * @param mixed $confirmPassword
+     */
+    public function setConfirmPassword($confirmPassword)
+    {
+        $this->confirmPassword = $confirmPassword;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
+    }
+
+    /**
+     * @Assert\True(message = "Passwords are not the same")
+     */
+    public function isPasswordLegal()
+    {
+        return ($this->plainPassword == $this->confirmPassword);
     }
 }

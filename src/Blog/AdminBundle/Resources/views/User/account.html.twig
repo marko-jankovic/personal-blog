@@ -1,25 +1,8 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
 {% block content %}
-    <div id="content">
+    <div class="content">
 
-        {% if user %}
-            <h2>Account Settings</h2>
-            <a href="{{ path('admin_user_update', {'id': user.id }) }}" class="button-add">Save Changes</a>
-
-            @TODO
-            <ul>
-                <li>{{ user.username }}</li>
-                <li>{{ user.email }}</li>
-                <li>{{ user.password }}</li>
-                <li>New Password</li>
-                <li>Confirm password</li>
-            </ul>
-
-        {% else %}
-            <h2>Create user</h2>
-            <a href="{{ path('admin_user_create') }}" class="button-add">Create new User</a>
-        {% endif %}
     </div>
 
 {% endblock %}

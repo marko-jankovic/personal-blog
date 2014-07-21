@@ -1,0 +1,39 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="content">
+
+        {% if user %}
+            <h2>Account Settings</h2>
+
+            <form name="update-user" method="post" action="" novalidate>
+
+                {{ showFormError(errors) }}
+
+                <fieldset>
+                    {{ form_label(form.email, 'Email') }}
+                    {{ form_widget(form.email, {'attr': {'placeholder': 'Email' }}) }}
+                </fieldset>
+
+                <fieldset>
+                    {{ form_label(form.plainPassword, 'New Password') }}
+                    {{ form_widget(form.plainPassword, {'attr': {'placeholder': 'Password (6 characters minimum)' }}) }}
+                </fieldset>
+
+                <fieldset>
+                    {{ form_label(form.confirmPassword, 'Confirm New Password') }}
+                    {{ form_widget(form.confirmPassword, {'attr': {'placeholder': 'Confirm Password' }}) }}
+                </fieldset>
+
+                {{ form_rest(form) }}
+
+                <input type="submit" class="button-add" name="update-user" value="Save changes"/>
+            </form>
+
+        {% else %}
+            <h2>Create user</h2>
+            <a href="{{ path('admin_user_create') }}" class="button-add">Create new User</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

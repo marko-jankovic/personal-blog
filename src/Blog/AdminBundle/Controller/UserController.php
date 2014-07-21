@@ -9,10 +9,14 @@
 namespace Blog\AdminBundle\Controller;
 
 
+use Blog\ModelBundle\Entity\User;
+use Blog\ModelBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Blog\ModelBundle\Services\UserManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class UserController extends Controller {
 
@@ -45,55 +49,126 @@ class UserController extends Controller {
         );
     }
 
-    /**
-     */
-    public function updateAction($id)
+    private function isCurrentUser($currentId)
     {
-        var_dump("update", $id);
-        die();
+
+        $isGranted = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        $userId = (string)$this->getUser()->getId();
+
+        if(!$isGranted && $currentId !== $userId) {
+            return false;
+        }
+        return true;
     }
 
-
     /**
-     * @Template("AdminBundle:User:user.html.twig")
+     * @Template()
      */
-    public function editAction($id)
-    {
+    public function accountAction($id) {
 
         $user = $this->getUserManager()
                      ->findOneBy(array('id' => $id));
 
-
         return array(
-            'actionName' => 'edit-user',
+            'actionName' => 'user-account',
             'user'       => $user
         );
     }
 
     /**
-     * @Template("AdminBundle:User:account.html.twig")
+     * @Template()
      */
-    public function accountAction($id)
+    public function editAction(Request $request, $id)
     {
+
+        if (!$this->isCurrentUser($id)) {
+            throw new AccessDeniedException();
+        }
+
+        $errors = array();
 
         $user = $this->getUserManager()
                      ->findOneBy(array('id' => $id));
 
+        $form = $this->createForm(new UserType(), $user);
+
+        if ($request->isMethod('POST')) {
+
+            $form->bind($request);
+            $manager = $this->getDoctrine()->getManager();
+
+            if ($form->isValid()) {
+
+                $data = $form->getData();
+
+                $user->setUsername($data->getUsername());
+                $user->setPassword($this->encodePassword($user, $data->getPlainPassword()));
+                $user->setEmail($data->getEmail());
+
+
+                $manager->persist($user);
+                $manager->flush();
+
+                $request->getSession()
+                        ->getFlashBag()
+                        ->add('success', 'Your credentials has been updated');
+
+                if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                    return $this->redirect($this->generateUrl('admin_user'));
+                }
+                else {
+                    return $this->redirect($this->generateUrl('admin_user_login'));
+                }
+
+            } else {
+
+                // Reset to default values or else it will get saved to the session
+                $manager->refresh($user);
+
+                $errors = $this->get('form_errors')->getArray($form);
+            }
+        }
 
         return array(
             'actionName' => 'edit-user',
-            'user'       => $user
+            'errors' => $errors,
+            'user'       => $user,
+            'form' => $form->createView()
         );
     }
 
+    /**
+     * Delete User
+     *
+     * @return RedirectResponse
+     *
+     * @param $id
+     */
     public function deleteAction($id)
     {
 
-        $user = $this->getUserManager()
-                     ->findOneBy(array('id' => $id));
+        $manager = $this->getDoctrine()->getManager();
+        $user = $this->getUserManager()->findOneBy(array('id' => $id));
 
-        var_dump($user);
-        die();
+        $manager->remove($user);
+        $manager->flush();
+
+        return $this->redirect($this->generateUrl('admin_user'));
+    }
+
+
+    public function statusAction($id, $flag) {
+
+        $manager = $this->getDoctrine()->getManager();
+        $user = $this->getUserManager()->findOneBy(array('id' => $id));
+
+        $flag = filter_var($flag, FILTER_VALIDATE_BOOLEAN);
+
+        $user->setIsActive($flag);
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirect($this->generateUrl('admin_user'));
     }
 
     /**
@@ -104,5 +179,15 @@ class UserController extends Controller {
     private function getUserManager()
     {
         return $this->get('userManager');
+    }
+
+    private function encodePassword($user, $plainPassword)
+    {
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($user);
+
+
+        return $encoder->encodePassword($plainPassword, $user->getSalt());
     }
 } 
