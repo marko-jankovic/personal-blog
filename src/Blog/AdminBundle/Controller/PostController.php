@@ -7,7 +7,9 @@
 
 namespace Blog\AdminBundle\Controller;
 
+use Blog\ModelBundle\Entity\Post;
 use Blog\ModelBundle\Form\Type\CommentType;
+use Blog\ModelBundle\Form\Type\PostType;
 use Blog\ModelBundle\Services\PostManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,36 +71,96 @@ class PostController extends Controller
     /**
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
-        $post = $this->getDoctrine()
-                     ->getRepository('ModelBundle:Post')
-                     ->findOneBy(array('id' => $id));
+        $errors = array();
+        $post = $this->getPostManager()->findOneBy(array('id' => $id));
 
+        $form = $this->createForm(new PostType(), $post);
+
+        if ($request->isMethod('POST')) {
+
+            $form->bind($request);
+
+            if ($form->isValid()) {
+
+                $data = $form->getData();
+
+                $post->setTitle($data->getTitle());
+                $post->setBody($data->getBody());
+                $post->setUser($this->getUser());
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($post);
+                $manager->flush();
+
+                return $this->redirect($this->generateUrl('admin_post'));
+
+            } else {
+                $errors = $this->get('form_errors')->getArray($form);
+            }
+        }
 
         return array(
             'actionName' => 'editPost',
-            'post'       => $post
+            'errors' => $errors,
+            'form'   => $form->createView()
         );
     }
 
     public function deleteAction($id)
     {
 
-        $user = $this->getPostManager()
+        $manager = $this->getDoctrine()->getManager();
+        $post = $this->getPostManager()
                      ->findOneBy(array('id' => $id));
 
-        var_dump($user);
-        die();
+
+        $manager->remove($post);
+        $manager->flush();
+
+        return $this->redirect($this->generateUrl('admin_post'));
     }
 
     /**
      * @Template()
      */
-    public function newAction()
+    public function createAction(Request $request)
     {
+
+        $errors = array();
+
+        $form = $this->createForm(new PostType());
+
+        if ($request->isMethod('POST')) {
+
+            $form->bind($request);
+
+            if ($form->isValid()) {
+
+                $data = $form->getData();
+                $post = new Post();
+
+                $post->setTitle($data->getTitle());
+                $post->setBody($data->getBody());
+                $post->setUser($this->getUser());
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($post);
+                $manager->flush();
+
+                return $this->redirect($this->generateUrl('admin_post'));
+
+            } else {
+                $errors = $this->get('form_errors')->getArray($form);
+            }
+        }
+
+
         return array(
-            'actionName' => 'createPost'
+            'actionName' => 'createPost',
+            'errors' => $errors,
+            'form'       => $form->createView()
         );
     }
 

@@ -29,7 +29,7 @@ class Post extends TimeStamp
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=150)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Title is required")
      */
     private $title;
 
@@ -45,16 +45,15 @@ class Post extends TimeStamp
      * @var string
      *
      * @ORM\Column(name="body", type="text")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Post body is empty")
      */
     private $body;
 
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-     * @Assert\NotBlank
      */
     private $user;
 

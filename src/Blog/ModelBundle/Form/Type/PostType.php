@@ -8,11 +8,30 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PostType extends AbstractType
 {
-    /**
-     * {@inheritDoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder
+            ->add('title', 'text')
+            ->add('body', 'textarea');
+    }
 
+    /**
+     * Returns the name of this type.
+     *
+     * @return string The name of this type
+     */
+    public function getName()
+    {
+        return 'create_post';
+    }
+
+    /**
+     * Prepopulate forme with current user data
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Blog\ModelBundle\Entity\Post'
+        ));
     }
 }
