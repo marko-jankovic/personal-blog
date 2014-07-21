@@ -24,9 +24,8 @@ class RegisterType extends AbstractType
         $builder
             ->add('username', 'text')
             ->add('email', 'email')
-            ->add('plainPassword', 'repeated', array(
-                'type' => 'password'
-            ));
+            ->add('plainPassword', 'password')
+            ->add('confirmPassword', 'password');
     }
 
     /**
@@ -45,9 +44,7 @@ class RegisterType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Blog\ModelBundle\Entity\User',
-            'cascade_validation' => true,
-            'error_bubbling' => true
+            'data_class' => 'Blog\ModelBundle\Entity\User'
         ));
     }
 }
