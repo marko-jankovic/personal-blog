@@ -59,7 +59,7 @@ class Posts extends AbstractFixture implements OrderedFixtureInterface{
      * Get the user
      *
      * @param ObjectManager $manager
-     * @param string        $username
+     * @param string        $email
      *
      * @return User
      */

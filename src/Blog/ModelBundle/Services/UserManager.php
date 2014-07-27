@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class UserManager
 {
-    private $em;
+    public $em;
 
     /**
      * @param EntityManager $em

@@ -47,24 +47,6 @@ class PostManager
     }
 
     /**
-     * Find all posts for a given author
-     *
-     * @param User $user
-     *
-     * @return array
-     */
-    public function findPosts($user)
-    {
-        $posts = $this->em->getRepository('ModelBundle:Post')->findBy(
-              array(
-                  'user' => $user
-              )
-        );
-
-        return $posts;
-    }
-
-    /**
      * Find latest posts
      *
      * @param int $num

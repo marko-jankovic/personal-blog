@@ -35,7 +35,7 @@ class PostController extends Controller
         }
         // show only current user posts
         else {
-            $posts = $this->getPostManager()->findPosts($user);
+            $posts = $user->getPosts();
         }
 
         return array(
@@ -102,7 +102,7 @@ class PostController extends Controller
         }
 
         return array(
-            'actionName' => 'editPost',
+            'actionName' => 'edit-post',
             'errors' => $errors,
             'form'   => $form->createView()
         );
@@ -158,7 +158,7 @@ class PostController extends Controller
 
 
         return array(
-            'actionName' => 'createPost',
+            'actionName' => 'create-post',
             'errors' => $errors,
             'form'       => $form->createView()
         );
