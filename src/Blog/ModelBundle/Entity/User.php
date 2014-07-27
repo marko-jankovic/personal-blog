@@ -107,6 +107,13 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $posts;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToOne(targetEntity="UserDetails", mappedBy="user")
+     */
+    private $details;
+
 
     public function __construct()
     {
@@ -449,4 +456,21 @@ class User implements AdvancedUserInterface, Serializable
     {
         return ($this->plainPassword == $this->confirmPassword);
     }
+
+    /**
+     * @param \Blog\ModelBundle\Entity\ArrayCollection $details
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+    }
+
+    /**
+     * @return \Blog\ModelBundle\Entity\ArrayCollection
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
 }

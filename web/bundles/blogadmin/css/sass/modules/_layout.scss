@@ -159,6 +159,24 @@ a {
         border-bottom: 1px #ededed solid;
     }
 
+    .button-delete {
+        @include background(linear-gradient(#fcfcfc, #eee));
+        height: 30px;
+        padding: 6px 8px;
+        color: #900;
+        border: 1px solid #ccc;
+        text-transform: uppercase;
+        text-decoration: none;
+        @include border-radius(2px);
+        @include font-size(12px);
+        margin: 15px 0 0 0;
+
+        &:hover {
+          color: white;
+          @include background(linear-gradient(#dc5f59, #b33630));
+        }
+    }
+
     .button-add {
         background: #9FBB58;
         height: 30px;
@@ -169,13 +187,18 @@ a {
         text-decoration: none;
         @include border-radius(2px);
         @include font-size(12px);
-        position: absolute;
-        right: 15px;
-        top: 20px;
+        margin: 15px 0 0 0;
 
         &:hover {
           @include background(linear-gradient(top, #9FBB58, #63AE26));
         }
+    }
+
+    .top-btn {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+        margin: 0;
     }
 }
 
@@ -192,7 +215,6 @@ a {
 
 //temporary
 #users .content,
-#profile .content,
 #category .content,
 #settings .content,
 #comments .content {

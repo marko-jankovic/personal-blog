@@ -4,19 +4,43 @@
 
     <div class="content">
         <h2>Profile Settings</h2>
-        <a href="{{ path('admin_profile_update') }}" class="button-add">Save</a>
 
+        <form name="update-profile" method="post" action="" novalidate>
 
-        @TODO
-        <ul>
-            <li>Avatar</li>
-            <li>Full Name</li>
-            <li>Location</li>
-            <li>Github</li>
-            <li>Twitter</li>
-            <li>Linkedin</li>
-            <li>Bio</li>
-            <li>Delete Account</li>
-        </ul>
+            {{ showFormError(errors) }}
+
+            <fieldset>
+                {{ form_label(form.fullName, 'Name') }}
+                {{ form_widget(form.fullName, {'attr': {'placeholder': 'Name' }}) }}
+            </fieldset>
+
+            <fieldset>
+                {{ form_label(form.location, 'Location') }}
+                {{ form_widget(form.location, {'attr': {'placeholder': 'Location' }}) }}
+            </fieldset>
+
+            <fieldset>
+                {{ form_label(form.github, 'Github profile') }}
+                {{ form_widget(form.github, {'attr': {'placeholder': 'Github profile' }}) }}
+            </fieldset>
+
+            <fieldset>
+                {{ form_label(form.twitter, 'Twitter profile') }}
+                {{ form_widget(form.twitter, {'attr': {'placeholder': 'Twitter profile' }}) }}
+            </fieldset>
+
+            <fieldset>
+                {{ form_label(form.linkedin, 'Linkedin profile') }}
+                {{ form_widget(form.linkedin, {'attr': {'placeholder': 'Linkedin profile' }}) }}
+            </fieldset>
+
+            {{ form_rest(form) }}
+
+            <input type="submit" class="button-add" name="updateUser" value="Update Profile"/>
+
+            {% if not is_granted('ROLE_ADMIN') %}
+                <input type="submit" class="button-delete top-btn" name="deleteUser" value="Delete Account"/>
+            {% endif %}
+        </form>
     </div>
 {% endblock %}
