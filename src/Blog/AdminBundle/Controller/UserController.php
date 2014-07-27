@@ -153,7 +153,12 @@ class UserController extends Controller {
         $manager->remove($user);
         $manager->flush();
 
-        return $this->redirect($this->generateUrl('admin_user'));
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            return $this->redirect($this->generateUrl('admin_user'));
+        }
+        else {
+            return $this->redirect($this->generateUrl('admin_user_login'));
+        }
     }
 
 
