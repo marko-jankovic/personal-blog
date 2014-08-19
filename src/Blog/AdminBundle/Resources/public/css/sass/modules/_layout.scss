@@ -28,7 +28,7 @@ a {
     }
 }
 
-#wrapper {
+.wrapper {
     /*max-width: 980px;*/
     margin: 15px;
     overflow: hidden;
@@ -45,7 +45,7 @@ a {
 .forgot,
 .login {
 
-    #wrapper {
+    .wrapper {
         border: none;
         background: none;
         margin: 40px auto auto;
