@@ -31,7 +31,8 @@ class FormError
 
             foreach ($form->all() as $key => $child) {
 
-                if ($err = $this->getErrors($child)) {
+                if ($err = $this->getErrors($child) && is_array($errors)) {
+
                     $errors[$key] = $this->getErrors($child);
                 }
             }
