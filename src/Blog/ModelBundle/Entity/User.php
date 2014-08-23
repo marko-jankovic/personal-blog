@@ -115,6 +115,14 @@ class User implements AdvancedUserInterface, Serializable
     private $details;
 
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isDeleted", type="boolean", nullable=true)
+     */
+    protected $userDeleted = false;
+
+
     public function __construct()
     {
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
@@ -473,4 +481,19 @@ class User implements AdvancedUserInterface, Serializable
         return $this->details;
     }
 
+    /**
+     * setUserDeleted
+     */
+    public function setUserDeleted()
+    {
+        $this->userDeleted = true;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getUserDeleted()
+    {
+        return $this->userDeleted;
+    }
 }

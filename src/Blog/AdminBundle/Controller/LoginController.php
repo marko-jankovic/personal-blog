@@ -47,24 +47,8 @@ class LoginController extends Controller {
         );
     }
 
-    public function logoutAction()
-    {
-
-    }
+    public function logoutAction() {}
 
 
-    public function loginCheckAction()
-    {
-
-    }
-
-//    /**
-//     * Get Post manager
-//     *
-//     * @return PostManager
-//     */
-//    private function getUserManager()
-//    {
-//        return $this->get('userManager');
-//    }
+    public function loginCheckAction() {}
 }

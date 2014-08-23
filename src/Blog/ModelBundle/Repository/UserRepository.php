@@ -61,9 +61,6 @@ class UserRepository extends EntityRepository implements UserProviderInterface
 
             return $this->find($user->getId());
         }
-        else {
-            //ovde uleti
-        }
     }
 
     /**

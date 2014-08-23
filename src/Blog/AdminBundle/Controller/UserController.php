@@ -8,8 +8,6 @@
 
 namespace Blog\AdminBundle\Controller;
 
-
-use Blog\ModelBundle\Entity\User;
 use Blog\ModelBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -150,14 +148,21 @@ class UserController extends Controller {
         $manager = $this->getDoctrine()->getManager();
         $user = $this->getUserManager()->findOneBy(array('id' => $id));
 
-        $manager->remove($user);
-        $manager->flush();
-
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+
+            $manager->remove($user);
+            $manager->flush();
+
             return $this->redirect($this->generateUrl('admin_user'));
         }
         else {
-            return $this->redirect($this->generateUrl('admin_user_login'));
+
+            $user->setUserDeleted();
+
+            $manager->persist($user);
+            $manager->flush();
+
+            return $this->redirect($this->generateUrl('admin_user_logout'));
         }
     }
 

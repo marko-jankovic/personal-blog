@@ -9,6 +9,7 @@
 namespace Blog\ModelBundle\Services;
 
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Http\Logout\LogoutSuccessHandlerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -18,17 +19,31 @@ class LogoutHandler implements LogoutSuccessHandlerInterface {
 
     private $security;
 
-    public function __construct(SecurityContext $security)
+    public function __construct(SecurityContext $security, EntityManager $em)
     {
         $this->security = $security;
+        $this->em = $em;
     }
 
+    /**
+     * Checking if user should be deleted
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function onLogoutSuccess(Request $request) {
 
-        // redirect the user to where they were before the login process begun.
-        $referer_url = $request->headers->get('referer');
+        $user = $this->security->getToken()->getUser();
 
-        $response = new RedirectResponse($referer_url);
+        if($user->getUserDeleted()) {
+
+            $this->em->remove($user);
+            $this->em->flush();
+        }
+
+        // redirect the user to where they were before the login process begun.
+        $response = new RedirectResponse($request->headers->get('referer'));
 
         return $response;
     }

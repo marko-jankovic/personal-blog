@@ -26,7 +26,7 @@ security:
             logout:
                 path: admin_user_logout
                 target: admin_user_login
-                #success_handler: logout_handler
+                success_handler: logout_handler
 
             remember_me:
                 key: random-key-2014

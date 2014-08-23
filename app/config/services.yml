@@ -15,6 +15,7 @@ services:
         class: %logout_handler.class%
         arguments:
           - @security.context
+          - @doctrine.orm.entity_manager
 
     author_manager:
         class: %author_manager.class%
