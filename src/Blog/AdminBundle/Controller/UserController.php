@@ -148,6 +148,8 @@ class UserController extends Controller {
         $manager = $this->getDoctrine()->getManager();
         $user = $this->getUserManager()->findOneBy(array('id' => $id));
 
+        // when current user is ADMIN
+        // redirect to user list after deleting
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
 
             $manager->remove($user);
@@ -155,8 +157,12 @@ class UserController extends Controller {
 
             return $this->redirect($this->generateUrl('admin_user'));
         }
+        // current user wants to delete account
+        // redirect him to logout
         else {
 
+            // mark user as deleted
+            // will be deleted onLogoutSuccess
             $user->setUserDeleted();
 
             $manager->persist($user);

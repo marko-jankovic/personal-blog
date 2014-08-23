@@ -21,6 +21,7 @@ class LogoutHandler implements LogoutSuccessHandlerInterface {
 
     public function __construct(SecurityContext $security, EntityManager $em)
     {
+        // attached dependencies through service.yml
         $this->security = $security;
         $this->em = $em;
     }
@@ -34,8 +35,11 @@ class LogoutHandler implements LogoutSuccessHandlerInterface {
      */
     public function onLogoutSuccess(Request $request) {
 
+        // get current user
         $user = $this->security->getToken()->getUser();
 
+        // check isDeleted field and delete user
+        // workaround for deleting current account
         if($user->getUserDeleted()) {
 
             $this->em->remove($user);
