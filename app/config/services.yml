@@ -2,6 +2,7 @@ parameters:
     author_manager.class: Blog\ModelBundle\Services\AuthorManager
     post_manager.class:   Blog\ModelBundle\Services\PostManager
     user_manager.class:   Blog\ModelBundle\Services\UserManager
+    logout_handler.class: Blog\ModelBundle\Services\LogoutHandler
 
     is_active.class:     Blog\ModelBundle\Twig\Helpers\isActive
     get_user_id.class:   Blog\ModelBundle\Twig\Helpers\getUserId
@@ -10,6 +11,11 @@ parameters:
     form_errors.class:   Blog\ModelBundle\Form\Helpers\FormError
 
 services:
+    logout_handler:
+        class: %logout_handler.class%
+        arguments:
+          - @security.context
+
     author_manager:
         class: %author_manager.class%
         arguments:
