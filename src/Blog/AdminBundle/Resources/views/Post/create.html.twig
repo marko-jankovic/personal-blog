@@ -16,7 +16,20 @@
             </fieldset>
             {{ form_rest(form) }}
 
-            <input type="submit" class="button-add" name="save-post" value="Save Post"/>
+            <select name="category">
+                <option value="javascript">JavaScript</option>
+                <option value="php">PHP</option>
+            </select>
+
+            <select name="tag">
+                <option value="backbone">Backbone</option>
+                <option value="angular">Angular</option>
+                <option value="react">React</option>
+                <option value="coding">Coding</option>
+                <option value="performance">Performance</option>
+            </select>
+
+            <input type="submit" class="button-add top-btn" name="save-post" value="Save Post"/>
         </form>
     </div>
 {% endblock %}
