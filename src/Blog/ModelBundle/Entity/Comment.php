@@ -2,6 +2,7 @@
 
 namespace Blog\ModelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -39,6 +40,13 @@ class Comment extends TimeStamp
     private $body;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Blog\ModelBundle\Entity\User", inversedBy="comments")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
+
+
+    /**
      * @var Post
      *
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
@@ -46,6 +54,27 @@ class Comment extends TimeStamp
      * @Assert\NotBlank
      */
     private $post;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="origin")
+     */
+    private $answers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="answers")
+     */
+    private $origin;
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $approved;
+
+    public function __construct()
+    {
+        $this->answers = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -125,5 +154,96 @@ class Comment extends TimeStamp
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param $answers
+     */
+    public function addAnswer(Comment $answers)
+    {
+        $this->answers[] = $answers;
+    }
+
+    /**
+     * Get answers
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+
+    /**
+     * Set origin
+     *
+     * @param $origin
+     *
+     * @return Comment
+     */
+    public function setOrigin(Comment $origin)
+    {
+        $this->origin = $origin;
+
+        return $this;
+    }
+
+    /**
+     * Get origin
+     */
+    public function getOrigin()
+    {
+        return $this->origin;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param $answers
+     */
+    public function addComment(Comment $answers)
+    {
+        $this->answers[] = $answers;
+    }
+
+    /**
+     * @param mixed $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+
+    /**
+     * Set user
+     *
+     * @param User $user
+     *
+     * @return Comment
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

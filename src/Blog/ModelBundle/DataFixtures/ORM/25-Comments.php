@@ -50,20 +50,46 @@ mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
             $comment1->setAuthorName('Someone1');
             $comment1->setBody($comments[0]);
             $comment1->setPost($post);
+            $comment1->setUser($post->getUser());
+            $comment1->setApproved(true);
+
+            $answer = new Comment();
+            $answer->setAuthorName('Someone put reply');
+            $answer->setBody($comments[0]);
+            $answer->setPost($post);
+            $answer->setUser($post->getUser());
+            $answer->setApproved(true);
+
+            $answer->setOrigin($comment1);
+
+            $answer2 = new Comment();
+            $answer2->setAuthorName('Someone replay to reply');
+            $answer2->setBody($comments[0]);
+            $answer2->setPost($post);
+            $answer2->setUser($post->getUser());
+            $answer2->setApproved(true);
+
+            $answer2->setOrigin($answer);
 
             $comment2 = new Comment();
             $comment2->setAuthorName('Someone2');
             $comment2->setBody($comments[1]);
             $comment2->setPost($post);
+            $comment2->setUser($post->getUser());
+            $comment2->setApproved(true);
 
             $comment3 = new Comment();
             $comment3->setAuthorName('Someone3');
             $comment3->setBody($comments[2]);
+            $comment3->setUser($post->getUser());
             $comment3->setPost($post);
+            $comment3->setApproved(true);
 
             $manager->persist($comment1);
             $manager->persist($comment2);
             $manager->persist($comment3);
+            $manager->persist($answer);
+            $manager->persist($answer2);
         }
 
         $manager->flush();
