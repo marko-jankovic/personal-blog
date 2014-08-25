@@ -25,6 +25,12 @@
                     {{ form_widget(form.confirmPassword, {'attr': {'placeholder': 'Confirm Password' }}) }}
                 </fieldset>
 
+                <select name="roles">
+                    {% for role in roles %}
+                        <option value="javascript">{{role.getName()}}</option>
+                    {% endfor %}
+                </select>
+
                 {{ form_rest(form) }}
 
                 <input type="submit" class="button-add" name="update-user" value="Save changes"/>

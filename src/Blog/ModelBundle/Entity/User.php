@@ -84,11 +84,12 @@ class User implements AdvancedUserInterface, Serializable
     private $isActive = true;
 
     /**
-     * @var array
+     * @var ArrayCollection
      *
-     * @ORM\Column(type="array")
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
+     * @ORM\JoinTable(name="user_roles")
      */
-    private $roles = array();
+    private $userRoles;
 
     /**
      * @var string
@@ -106,6 +107,11 @@ class User implements AdvancedUserInterface, Serializable
      * @ORM\OneToMany(targetEntity="Post", mappedBy="user", cascade={"remove"})
      */
     private $posts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     */
+    private $comments;
 
     /**
      * @var ArrayCollection
@@ -256,33 +262,6 @@ class User implements AdvancedUserInterface, Serializable
     public function getIsActive()
     {
         return $this->isActive;
-    }
-
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     *
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * Get roles
-     *
-     * @return array
-     */
-    public function getRoles()
-    {
-        $roles =  $this->roles;
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
     }
 
 
@@ -495,5 +474,53 @@ class User implements AdvancedUserInterface, Serializable
     public function getUserDeleted()
     {
         return $this->userDeleted;
+    }
+
+
+    public function getRoles()
+    {
+        return $this->getUserRoles()->toArray();
+    }
+
+    /**
+     */
+    public function getAllRoles()
+    {
+    }
+
+    /**
+     * Add userRoles
+     *
+     * @param \Blog\ModelBundle\Entity\Role $userRoles
+     */
+    public function setRole(Role $userRoles)
+    {
+        $this->userRoles[] = $userRoles;
+    }
+
+    /**
+     * Get userRoles
+     */
+    public function getUserRoles()
+    {
+        return $this->userRoles;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Comment $comments
+     */
+    public function addComment(Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
