@@ -49,6 +49,18 @@ class Post extends TimeStamp
      */
     private $body;
 
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $approved;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
+     * @ORM\JoinTable(name="post_tags")
+     */
+    private $tags;
+
     /**
      * @var User
      *
@@ -71,6 +83,7 @@ class Post extends TimeStamp
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -180,15 +193,15 @@ class Post extends TimeStamp
     }
 
     /**
-     * Add comments
+     * Add comment
      *
-     * @param Comment $comments
+     * @param \Blog\ModelBundle\Entity\Comment $answers
      *
-     * @return Post
+     * @return Comment
      */
-    public function addComment(Comment $comments)
+    public function addComment(Comment $answers)
     {
-        $this->comments[] = $comments;
+        $this->answers[] = $answers;
 
         return $this;
     }
@@ -212,4 +225,42 @@ class Post extends TimeStamp
     {
         return $this->comments;
     }
+
+    /**
+     * Add tags
+     *
+     * @param \Blog\ModelBundle\Entity\Tag $tags
+     */
+    public function addTag(Tag $tags)
+    {
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Blog\ModelBundle\Entity\Tag
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+
 }

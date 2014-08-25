@@ -88,6 +88,9 @@ class UserController extends Controller {
         $user = $this->getUserManager()
                      ->findOneBy(array('id' => $id));
 
+        $roles = $this->getUserManager()
+                        ->getAllRoles();
+
         $form = $this->createForm(new UserType(), $user);
 
         if ($request->isMethod('POST')) {
@@ -129,9 +132,10 @@ class UserController extends Controller {
 
         return array(
             'actionName' => 'edit-user',
-            'errors' => $errors,
-            'user'       => $user,
-            'form' => $form->createView()
+            'errors'    => $errors,
+            'user'      => $user,
+            'roles'     => $roles,
+            'form'      => $form->createView()
         );
     }
 
