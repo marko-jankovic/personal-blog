@@ -19,7 +19,7 @@ security:
             form_login:
                 login_path: admin_user_login
                 check_path: admin_user_check
-                default_target_path: admin_profile
+                default_target_path: admin_post
                 username_parameter: _email
                 remember_me: true
 
