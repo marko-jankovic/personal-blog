@@ -262,7 +262,10 @@
 
 	- *$ php app/console generate:doctrine:entity:AdminBundle:Post*
 	- *$ php app/console doctrine:schema:update --force
-	- *$ php app/console doctrine:fixtures:load -n 
+	- *$ php app/console doctrine:fixtures:load -n
+
+
+	 $this->addReference() ?
    
 
 ---------------------------------------------------------------------------------------------   
@@ -302,23 +305,31 @@
     - {{ form_rest(form) }} - print all required hidden inputs such as token   
    
 ---------------------------------------------------------------------------------------------   
-   
-   
-   - redirect na login posle profile 'delete account' 
-   - profile update fix za ROLE_USER
-   
-   
-   
-   - zavriti crud za usera
-   		pass, avatar, info
+    @TODO
+
+   - User profile update
+        - Admin moze da promenit Role
+        - Public Name
+        - Biographical Info
+        - Send this password to the new user by email
+        - avatar
+
+   - Settings
+        - Site Title
+        - Writting options
+        - Reading options
+        - Widgets (Archives, RSS, Categories, Tag Cloud...)
+        - Themes
    	
-   - zavriti crud za post
-   		napraviti categories/tags, ubaciti editor
-   		
-   - napraviti reply na comment, uraditi security question
-   		
-   - napraviti form type za sve forme
+   - Posts
+   	    - categories/tags crud
+   	    - ubaciti editor
+
+   - Comments
+        - reply to comment
+        - security question
+        - admin can delete/approve
+
    - napraviti Role entity
-   - zavrsiti forgot
    
    ---------------------------------------------------------------------------------------------
