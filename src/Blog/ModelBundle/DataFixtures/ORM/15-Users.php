@@ -54,6 +54,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
         $inactive->setPassword($this->encodePassword($inactive, 'inactivepass'));
         $inactive->setEmail('inactive@example.com');
         $inactive->setIsActive(false);
+        $inactive->setRole($this->getReference('role_user'));
         $manager->persist($inactive);
 
         $manager->flush();
