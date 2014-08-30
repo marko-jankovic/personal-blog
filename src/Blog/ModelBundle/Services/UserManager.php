@@ -60,15 +60,8 @@ class UserManager
         return $user;
     }
 
-    /**
-     * Get All Roles
-     *
-     * @return array
-     */
     public function getAllRoles()
     {
-        $roles = $this->em->getRepository('ModelBundle:Role')->getAllRoles();
-
-        return $roles;
+        return $this->em->getRepository('ModelBundle:Role')->findAll();
     }
 }

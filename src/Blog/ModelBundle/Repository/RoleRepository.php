@@ -12,11 +12,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class RoleRepository extends EntityRepository
 {
-    public function getAllRoles()
-    {
-        $roles = $this->getEntityManager()->getRepository('ModelBundle:Role')->findAll();
 
-
-        return $roles;
-    }
 }
