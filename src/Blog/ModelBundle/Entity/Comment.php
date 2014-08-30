@@ -40,7 +40,7 @@ class Comment extends TimeStamp
     private $body;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Blog\ModelBundle\Entity\User", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
@@ -62,6 +62,7 @@ class Comment extends TimeStamp
 
     /**
      * @ORM\ManyToOne(targetEntity="Comment", inversedBy="answers")
+     * @ORM\JoinColumn(name="origin_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $origin;
 

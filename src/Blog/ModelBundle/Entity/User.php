@@ -109,7 +109,9 @@ class User implements AdvancedUserInterface, Serializable
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"remove"})
      */
     private $comments;
 
@@ -480,6 +482,12 @@ class User implements AdvancedUserInterface, Serializable
     public function getRoles()
     {
         return $this->getUserRoles()->toArray();
+    }
+
+    /**
+     */
+    public function getAllRoles()
+    {
     }
 
     /**
