@@ -483,12 +483,6 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
-     */
-    public function getAllRoles()
-    {
-    }
-
-    /**
      * Add userRoles
      *
      * @param \Blog\ModelBundle\Entity\Role $userRoles

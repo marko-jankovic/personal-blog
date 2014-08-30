@@ -1,3 +1,4 @@
+#register-form,
 #login-form {
 	overflow: hidden;
 	background: white;
@@ -6,13 +7,14 @@
 	margin: auto;
 	@include font-size(14px);
 	color: #777;
+    border: 1px #ccc solid;
 	@include border-radius(6px);
 	@include box-shadow(#d4d4d4 0 1px 3px);
 
 	h2 {
 	    margin: 0 0 15px 0;
 	    border: 1px #3B73AF;
-	    background: #5D9741;
+	    background: url('../img/green-bck.gif');
 	    text-align: center;
 	    padding: 10px 0;
 	    color: white;
@@ -28,19 +30,38 @@
     label {
     	color: #444;
     }
+
+    button {
+        width: 145px;
+        color: white;
+        background: #7ea842;
+        @include box-shadow(#777 0px 0px 2px 1px);
+        @include border-radius(6px);
+        @include font-size(15px);
+        border: 2px #fff solid;
+        line-height: 35px;
+        padding: 0;
+        margin: 15px auto auto;
+        display: block;
+
+        &:disabled {
+            opacity: 0.7;
+        }
+    }
 }
 
 .register-signin-header {
     overflow: hidden;
     padding: 12px;
     border-bottom: 2px #5D9741 solid;
-    background: #393939;
+    background: #393939 url('../img/crossed-stripes.png');
     text-align: right;
     color: #999;
 
     a {
         color: #CACACA;
         @include font-size(13px);
+        margin: 0 7px;
     }
 }
 
@@ -48,47 +69,24 @@
     float: left;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
-
-	width: 100%;
-	@include font-size(16px);
-	padding: 10px;
-	color: #444;
-	background: #FBFBFB;
-	border: 1px #ddd solid;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
-
-	&:focus {
-		background: #fff;
-	}
-}
-
-button {
-	width: 140px;
-	color: white;
-	@include background(linear-gradient(top, $base-button-filter-end-color, $base-button-filter-start-color));
-	@include box-shadow(#777 0px 0px 2px 1px);
-	@include border-radius(6px);
-	@include font-size(15px);
-	border: 2px #fff solid;
-	line-height: 30px;
-	margin: 15px auto auto;
-	display: block;
-
-	&:disabled {
-		opacity: 0.7;
-	}
+.success-message {
+    background: #e9efe0;
+    color: #666;
+    margin-bottom: 10px;
+    padding: 15px 25px;
 }
 
 .error-message {
-  margin-bottom: 20px;
-  padding: 15px;
-  text-align: center;
-  background-color: #F2DEDE;
-  border-color: #EBCCD1;
-  color: #B94A48;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    list-style: inside;
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #B94A48;
+
+    li {
+        margin-left: 10px;
+    }
 }
 
 #login_keep_me {
@@ -106,4 +104,22 @@ button {
     float: right;
     font-weight: 400;
     @include font-size(12px);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+
+  width: 100%;
+  @include font-size(16px);
+  padding: 10px;
+  color: #444;
+  background: #FBFBFB;
+  border: 1px #ddd solid;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
+
+  &:focus {
+    background: #fff;
+  }
 }

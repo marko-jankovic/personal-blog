@@ -25,11 +25,13 @@
                     {{ form_widget(form.confirmPassword, {'attr': {'placeholder': 'Confirm Password' }}) }}
                 </fieldset>
 
+                {% if is_granted('ROLE_ADMIN') %}
                 <select name="roles">
                     {% for role in roles %}
-                        <option value="javascript">{{role.getName()}}</option>
+                        <option value="{{ role.getName() }}">{{role.getName()}}</option>
                     {% endfor %}
                 </select>
+                {% endif %}
 
                 {{ form_rest(form) }}
 
