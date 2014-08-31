@@ -237,17 +237,21 @@ class Post extends TimeStamp
     /**
      * Add tags
      *
-     * @param \Blog\ModelBundle\Entity\Tag $tags
+     * @param Tag $tags
+     *
+     * @return $this
      */
     public function addTag(Tag $tags)
     {
         $this->tags[] = $tags;
+
+        return $this;
     }
 
     /**
      * Get tags
      *
-     * @return \Blog\ModelBundle\Entity\Tag
+     * @return Tag
      */
     public function getTags()
     {
@@ -268,6 +272,22 @@ class Post extends TimeStamp
     public function getApproved()
     {
         return $this->approved;
+    }
+
+    /**
+     * @param \Blog\ModelBundle\Entity\Category $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return \Blog\ModelBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
 
