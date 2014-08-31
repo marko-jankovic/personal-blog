@@ -305,10 +305,32 @@
     - {{ form_rest(form) }} - print all required hidden inputs such as token   
    
 ---------------------------------------------------------------------------------------------   
+
+ Dobar primer
+    http://docs.oracle.com/cd/E17984_01/doc.898/e14717/user_and_role_profiles.htm
+    docs.doctrine-project.org/en/2.0.x/reference/association-mapping.html
+    http://doctrine-orm.readthedocs.org/en/latest/reference/association-mapping.html
+
+
+ @ORM Maping
+
+ - User can have **N **posts
+
+ 	@ORM\OneToMany(targetEntity="Post", mappedBy="user", cascade={"remove"}
+
+
+ - Post can have only one User
+
+ 	@ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+
+ 	@ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+
+
+---------------------------------------------------------------------------------------------
+
     @TODO
 
    - User profile update
-        - Admin moze da promenit Role
         - Public Name
         - Biographical Info
         - Send this password to the new user by email
@@ -326,10 +348,23 @@
    	    - ubaciti editor
 
    - Comments
-        - reply to comment
+        - reply to comment - treba proveriti
         - security question
         - admin can delete/approve
 
-   - napraviti Role entity
+
+    @issues
+
+    1)  -> delete user acc
+        -> redirection to login
+        -> login with admin credential
+        -> redirect to deleted user profile (user doesn't exist)
+
+    2)  -> admin change the user role
+        -> password is required (should be only for user)
+
+    3)  -> do we need $this->posts = new ArrayCollection(); in contructor
+        -> or just annontation @var ArrayCollection
+
    
    ---------------------------------------------------------------------------------------------
