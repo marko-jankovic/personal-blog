@@ -2,7 +2,21 @@
 
 {% block content %}
     <div class="content">
-        <h2>Create New Category</h2>
+        <h2>New Category</h2>
+
+        <form name="save-catgory" method="post" action="" novalidate>
+
+            {{ showFormError(errors) }}
+            <fieldset>
+                {{ form_widget(form.name, {'attr': {'placeholder': 'Title' }}) }}
+            </fieldset>
+
+            <fieldset>
+                {{ form_widget(form.description, {'attr': {'placeholder': 'Write something' }}) }}
+            </fieldset>
+            {{ form_rest(form) }}
+
+            <input type="submit" class="button-add top-btn" name="save-category" value="Save Category"/>
+        </form>
     </div>
 {% endblock %}
-

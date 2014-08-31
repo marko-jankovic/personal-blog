@@ -217,7 +217,8 @@ a {
 #users .content,
 #category .content,
 #settings .content,
-#comments .content {
+#comments .content,
+#categories .content {
 
   ul {
     padding: 12px 15px;
@@ -298,13 +299,4 @@ a {
           }
       }
   }
-}
-
-#edit-create-post {
-    margin: 30px 70px;
-
-    textarea {
-        margin: 15px 0;
-        height: 300px;
-    }
 }

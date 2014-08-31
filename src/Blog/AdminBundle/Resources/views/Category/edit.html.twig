@@ -1,0 +1,34 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="content">
+
+        {% if category %}
+            <h2>Edit category</h2>
+
+            <form name="update-category" method="post" action="" novalidate>
+
+                {{ showFormError(errors) }}
+
+                <fieldset>
+                    {{ form_label(form.name, 'Name') }}
+                    {{ form_widget(form.name, {'attr': {'placeholder': 'Name' }}) }}
+                </fieldset>
+
+                <fieldset>
+                    {{ form_label(form.description, 'Description') }}
+                    {{ form_widget(form.description, {'attr': {'placeholder': 'Description' }}) }}
+                </fieldset>
+                
+                {{ form_rest(form) }}
+
+                <input type="submit" class="button-add" name="update-category" value="Save changes"/>
+            </form>
+
+        {% else %}
+            <h2>Create category</h2>
+            <a href="{{ path('admin_category_create') }}" class="button-add">Create new category</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

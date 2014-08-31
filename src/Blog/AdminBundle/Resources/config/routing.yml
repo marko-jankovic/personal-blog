@@ -26,6 +26,14 @@ admin_category_create:
     pattern: /admin/category/new
     defaults: { _controller: AdminBundle:Category:create }
 
+admin_category_edit:
+    pattern: /admin/category/edit/{id}
+    defaults: { _controller: AdminBundle:Category:edit }
+
+admin_category_delete:
+    pattern: /admin/category/delete/{id}
+    defaults: { _controller: AdminBundle:Category:delete }
+
 ########################################################
 
 

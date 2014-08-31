@@ -40,7 +40,7 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="post", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="post")
      */
     private $posts;
 

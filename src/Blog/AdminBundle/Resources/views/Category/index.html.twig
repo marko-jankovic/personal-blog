@@ -1,13 +1,27 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
 {% block content %}
+
     <div class="content">
         <h2>Categories</h2>
         <a href="{{ path('admin_category_create') }}" class="button-add top-btn">Create Category</a>
 
         <ul>
-            <li>CRUD</li>
+            {% for category in categories %}
+                <li>
+                    <span>{{ category.name }}</span>
+
+                    <p>
+                        <a href="{{ path('admin_category_edit', {'id': category.id }) }}">
+                            edit
+                        </a>
+                        <a onclick="confirmDelete('{{ path('admin_category_delete', {'id': category.id }) }}')" href="#">
+                            delete
+                        </a>
+                    </p>
+                </li>
+            {% endfor %}
         </ul>
     </div>
-{% endblock %}
 
+{% endblock %}

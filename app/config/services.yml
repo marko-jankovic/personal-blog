@@ -1,8 +1,9 @@
 parameters:
-    author_manager.class: Blog\ModelBundle\Services\AuthorManager
-    post_manager.class:   Blog\ModelBundle\Services\PostManager
-    user_manager.class:   Blog\ModelBundle\Services\UserManager
-    logout_handler.class: Blog\ModelBundle\Services\LogoutHandler
+    author_manager.class:   Blog\ModelBundle\Services\AuthorManager
+    post_manager.class:     Blog\ModelBundle\Services\PostManager
+    user_manager.class:     Blog\ModelBundle\Services\UserManager
+    logout_handler.class:   Blog\ModelBundle\Services\LogoutHandler
+    category_manager.class: Blog\ModelBundle\Services\CategoryManager
 
     is_active.class:     Blog\ModelBundle\Twig\Helpers\isActive
     get_user_id.class:   Blog\ModelBundle\Twig\Helpers\getUserId
@@ -32,6 +33,11 @@ services:
             class: %user_manager.class%
             arguments:
                 - @doctrine.orm.entity_manager
+    category_manager:
+            class: %category_manager.class%
+            arguments:
+                - @doctrine.orm.entity_manager
+                - @form.factory
 
     form_errors:
             class: %form_errors.class%
