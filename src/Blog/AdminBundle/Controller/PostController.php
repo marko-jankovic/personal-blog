@@ -89,6 +89,7 @@ class PostController extends Controller
                 $post->setTitle($data->getTitle());
                 $post->setBody($data->getBody());
                 $post->setUser($this->getUser());
+                $post->setCategory($data->getCategory());
 
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($post);

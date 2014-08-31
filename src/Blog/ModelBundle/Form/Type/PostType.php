@@ -12,7 +12,13 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            ->add('body', 'textarea');
+            ->add('body', 'textarea')
+            ->add('category', 'entity', array(
+                'property'    => 'name',
+                'class'       => 'ModelBundle:Category',
+                'required'    => false,
+                'empty_value' => 'Add Category'
+            ));
     }
 
     /**
