@@ -37,7 +37,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
         $user = new User();
         $user->setUsername('user');
         $user->setPassword($this->encodePassword($user, 'userpass'));
-        $user->setRole($this->getReference('role_user'));
+        $user->addRole($this->getReference('role_user'));
         $user->setIsActive(true);
         $user->setEmail('user@example.com');
         $manager->persist($user);
@@ -46,7 +46,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
         $admin->setUsername('admin');
         $admin->setPassword($this->encodePassword($admin, 'adminpass'));
         $admin->setEmail('admin@example.com');
-        $admin->setRole($this->getReference('role_admin'));
+        $admin->addRole($this->getReference('role_admin'));
         $manager->persist($admin);
 
         $inactive = new User();
@@ -54,7 +54,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
         $inactive->setPassword($this->encodePassword($inactive, 'inactivepass'));
         $inactive->setEmail('inactive@example.com');
         $inactive->setIsActive(false);
-        $inactive->setRole($this->getReference('role_user'));
+        $inactive->addRole($this->getReference('role_user'));
         $manager->persist($inactive);
 
         $manager->flush();

@@ -37,17 +37,11 @@ class Tag
     private $quantifier;
 
     /**
-     * @var string
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
      */
     private $posts;
-
-
-    public function __construct()
-    {
-        $this->posts = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -120,7 +114,7 @@ class Tag
     /**
      * Add posts
      *
-     * @param \Blog\ModelBundle\Entity\Post $posts
+     * @param $posts
      *
      * @return post
      */

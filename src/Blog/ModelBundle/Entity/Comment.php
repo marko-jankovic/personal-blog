@@ -56,6 +56,8 @@ class Comment extends TimeStamp
     private $post;
 
     /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="origin")
      */
     private $answers;
@@ -71,11 +73,6 @@ class Comment extends TimeStamp
      * @ORM\Column(type="boolean")
      */
     protected $approved;
-
-    public function __construct()
-    {
-        $this->answers = new ArrayCollection();
-    }
 
     /**
      * Get id
