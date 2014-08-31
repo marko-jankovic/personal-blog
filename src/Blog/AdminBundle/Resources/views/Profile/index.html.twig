@@ -5,6 +5,12 @@
     <div class="content">
         <h2>Profile Settings</h2>
 
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="button-add top-btn" href="{{ path('admin_user_edit', {id: getUserId(app)}) }}">
+                Edit Account
+            </a>
+        {% endif %}
+
         <form name="update-profile" method="post" action="" novalidate>
 
             {{ showFormError(errors) }}
@@ -37,10 +43,6 @@
             {{ form_rest(form) }}
 
             <input type="submit" class="button-add" name="updateUser" value="Update Profile"/>
-
-            {% if not is_granted('ROLE_ADMIN') %}
-                <input type="submit" class="button-delete top-btn" name="deleteUser" value="Delete Account"/>
-            {% endif %}
         </form>
     </div>
 {% endblock %}

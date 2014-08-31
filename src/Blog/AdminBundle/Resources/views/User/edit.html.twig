@@ -26,16 +26,21 @@
                 </fieldset>
 
                 {% if is_granted('ROLE_ADMIN') %}
-                <select name="roles">
-                    {% for role in roles %}
-                        <option value="{{ role.getName() }}">{{role.getName()}}</option>
-                    {% endfor %}
-                </select>
+                <fieldset>
+                    {{ form_label(form.userRoles, 'User roles') }}
+                    {{ form_widget(form.userRoles) }}
+                </fieldset>
                 {% endif %}
 
                 {{ form_rest(form) }}
 
                 <input type="submit" class="button-add" name="update-user" value="Save changes"/>
+
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <a class="button-delete top-btn" href="{{ path('admin_user_delete', {id: getUserId(app)}) }}">
+                        Delete Account
+                    </a>
+                {% endif %}
             </form>
 
         {% else %}
