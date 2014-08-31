@@ -58,6 +58,10 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, FixtureI
         $manager->persist($inactive);
 
         $manager->flush();
+
+        $this->addReference('user', $user);
+        $this->addReference('admin', $admin);
+        $this->addReference('inactive', $inactive);
     }
 
     private function encodePassword($user, $plainPassword)

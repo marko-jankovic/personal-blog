@@ -24,7 +24,7 @@ class Categories extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()  
     {
-        return 20;
+        return 3;
     }
 
     /**
@@ -50,6 +50,10 @@ class Categories extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($c3);
 
         $manager->flush();
+
+        $this->addReference('prva', $c1);
+        $this->addReference('druga', $c2);
+        $this->addReference('treca', $c3);
     }
     
 }
