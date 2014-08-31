@@ -4,10 +4,36 @@
     <div class="content">
         <h2>Comments</h2>
 
-        <ul>
-            <li>Comment - Post Name - User Name</li>
-            <li>Delete Comment</li>
-        </ul>
+        <form name="delete-comments" method="post" action="{{ path('admin_comments_delete') }}" novalidate>
+            {% for comment in comments %}
+                <article class="post">
+                    <input type="checkbox" value="{{ comment.id }}" name="comments[]">
+                    <header>
+                        <h3>
+                            <a href="{{ path('admin_post_show', {'slug': comment.post.slug }) }}">{{ comment.post.title }}</a>
+                        </h3>
+
+                        <a href="{{ path('admin_user_account', {'id':  comment.user.id}) }}">
+                            {{ comment.user.username }}
+                        </a>
+                    </header>
+                    <p class="entry">{{ comment.body | truncate(150) }}</p>
+                </article>
+            {% endfor %}
+
+            {% if comments|length > 0 %}
+                <select name="bulk-action">
+                    <option value="">Bulk Action</option>
+                    <option value="true">Delete</option>
+                </select>
+
+                <input type="submit" class="button-add" name="delete-comments" value="Apply"/>
+            {% else %}
+                <article>
+                    0 Comment
+                </article>
+            {% endif %}
+
+        </form>
     </div>
 {% endblock %}
-

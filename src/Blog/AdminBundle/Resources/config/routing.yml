@@ -44,8 +44,8 @@ admin_comments:
     defaults: { _controller: AdminBundle:Comments:index }
 
 admin_comments_delete:
-    pattern: /admin/comments/delete/{id}
-    defaults: { _controller: AdminBundle:Comments:delete }
+    pattern: /admin/comments/commentsDelete
+    defaults: { _controller: AdminBundle:Comments:commentsDelete }
 
 ########################################################
 
@@ -75,6 +75,10 @@ admin_post_show:
 admin_post_delete:
     pattern: /admin/post/delete/{id}
     defaults: { _controller: AdminBundle:Post:delete }
+
+admin_post_delete_selected:
+    pattern: /admin/post/deleteSelected
+    defaults: { _controller: AdminBundle:Post:deleteSelected }
 
 admin_post_edit:
     pattern: /admin/post/edit/{id}

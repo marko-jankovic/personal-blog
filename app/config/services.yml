@@ -4,11 +4,10 @@ parameters:
     user_manager.class:     Blog\ModelBundle\Services\UserManager
     logout_handler.class:   Blog\ModelBundle\Services\LogoutHandler
     category_manager.class: Blog\ModelBundle\Services\CategoryManager
-
-    is_active.class:     Blog\ModelBundle\Twig\Helpers\isActive
-    get_user_id.class:   Blog\ModelBundle\Twig\Helpers\getUserId
-    show_form_errors.class:   Blog\ModelBundle\Twig\Helpers\showFormErrors
-
+    comment_manager.class:  Blog\ModelBundle\Services\CommentManager
+    is_active.class:        Blog\ModelBundle\Twig\Helpers\isActive
+    get_user_id.class:      Blog\ModelBundle\Twig\Helpers\getUserId
+    show_form_errors.class: Blog\ModelBundle\Twig\Helpers\showFormErrors
     form_errors.class:   Blog\ModelBundle\Form\Helpers\FormError
 
 services:
@@ -38,6 +37,11 @@ services:
             arguments:
                 - @doctrine.orm.entity_manager
                 - @form.factory
+
+    comment_manager:
+            class: %comment_manager.class%
+            arguments:
+                - @doctrine.orm.entity_manager
 
     form_errors:
             class: %form_errors.class%

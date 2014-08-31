@@ -40,7 +40,7 @@ class PostController extends Controller
 
         return array(
             'posts'         => $posts,
-            'actionName'    => "showPosts"
+            'actionName'    => "show-posts"
         );
     }
 
@@ -63,7 +63,7 @@ class PostController extends Controller
 
         return array(
             'post'      => $post,
-            'actionName' => 'showPosts',
+            'actionName' => 'show-posts',
             'form'       => $form->createView()
         );
     }
@@ -106,6 +106,36 @@ class PostController extends Controller
             'errors' => $errors,
             'form'   => $form->createView()
         );
+    }
+
+    public function deleteSelectedAction(Request $request) {
+
+        $redirect = $this->redirect($this->generateUrl('admin_post'));
+
+        if ($request->isMethod('POST')) {
+
+            if($request->get('bulk-action') && $request->get('delete-posts')) {
+
+                $selectedPosts = $request->get('posts');
+
+                $manager = $this->getDoctrine()->getManager();
+                $posts   = $this->getPostManager()
+                                ->findByList($selectedPosts);
+
+                foreach ($posts as $post) {
+                    $manager->remove($post);
+                    $manager->flush();
+                }
+
+                return $redirect;
+            }
+            else {
+                return $redirect;
+            }
+        }
+        else {
+            return $redirect;
+        }
     }
 
     public function deleteAction($id)
