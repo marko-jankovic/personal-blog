@@ -51,7 +51,7 @@ class CategoryManager
         $category = $this->em->getRepository('ModelBundle:Category')->findOneBy($array);
 
         if (null === $category) {
-            throw new NotFoundHttpException('Post was not found');
+            throw new NotFoundHttpException('Category was not found');
         }
 
         return $category;
@@ -78,29 +78,5 @@ class CategoryManager
         }
 
         return $category;
-    }
-
-    /**
-     * Create and validate a new category
-     *
-     * @param Category $post
-     * @param Request  $request
-     *
-     * @return FormInterface|boolean
-     */
-    public function createCategory(Category $category, Request $request)
-    {
-        $category = new Category();
-        $form = $this->formFactory->create(new CategoryType());
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $this->em->persist($category);
-            $this->em->flush();
-
-            return true;
-        }
-
-        return $form;
     }
 }

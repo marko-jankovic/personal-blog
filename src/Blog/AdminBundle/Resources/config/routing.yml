@@ -92,6 +92,10 @@ admin_post_create_comment:
   pattern: /admin/{slug}/create-comment
   defaults: { _controller: AdminBundle:Post:createComment }
 
+admin_post_category:
+    pattern: /admin/posts/category-{slug}
+    defaults: { _controller: AdminBundle:Post:category }
+
 ########################################################
 
 

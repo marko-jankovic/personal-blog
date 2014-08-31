@@ -14,6 +14,10 @@
                         <a href="{{ path('admin_post_show', {'slug': post.slug }) }}">{{ post.title }}</a>
                     </h3>
 
+                    <a href="{{ path('admin_post_category', {'slug': post.category.slug }) }}">
+                        {{ post.category.name }}
+                    </a>
+
                     <a href="{{ path('admin_user_account', {'id':  post.user.id})}}">
                        {{ post.user.username }}
                     </a>

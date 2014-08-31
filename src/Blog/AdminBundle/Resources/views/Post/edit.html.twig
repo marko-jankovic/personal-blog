@@ -14,6 +14,13 @@
             <fieldset>
                 {{ form_widget(form.body, {'attr': {'placeholder': 'Write something' }}) }}
             </fieldset>
+
+            <fieldset>
+                {{ form_label(form.category, 'Add Category') }}
+                {{ form_widget(form.category) }}
+            </fieldset>
+
+
             {{ form_rest(form) }}
 
             <input type="submit" class="button-add" name="save-post" value="Update Post"/>

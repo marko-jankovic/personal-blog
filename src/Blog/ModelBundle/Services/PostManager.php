@@ -7,6 +7,7 @@
 
 namespace Blog\ModelBundle\Services;
 
+use Admin\CategoryBundle\Entity\Category;
 use Blog\ModelBundle\Entity\Comment;
 use Blog\ModelBundle\Entity\Post;
 use Blog\ModelBundle\Form\Type\CommentType;
@@ -153,5 +154,22 @@ class PostManager
         }
 
         return $form;
+    }
+
+    /**
+     * Find all posts for a given author
+     *
+     * @param Category $category
+     *
+     * @return array
+     */
+    public function findByCategory(Category $category)
+    {
+        $posts = $this->em->getRepository('ModelBundle:Post')->findBy(
+            array(
+              'category' => $category
+            ));
+
+        return $posts;
     }
 }

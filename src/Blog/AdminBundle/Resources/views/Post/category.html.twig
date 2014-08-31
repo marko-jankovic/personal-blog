@@ -1,0 +1,35 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="content">
+        <h2>All Posts Seleceted By "{{ category.name }}"</h2>
+
+        <form name="delete-posts" method="post" action="{{ path('admin_post_delete_selected') }}" novalidate>
+            {% for post in posts %}
+                <article class="post">
+                    <header>
+                        <h3>
+                            <a href="{{ path('admin_post_show', {'slug': post.slug }) }}">{{ post.title }}</a>
+                        </h3>
+
+                        <a href="{{ path('admin_post_category', {'slug': post.category.slug }) }}">
+                            {{ post.category.name }}
+                        </a>
+
+                        <a href="{{ path('admin_user_account', {'id':  post.user.id}) }}">
+                            {{ post.user.username }}
+                        </a>
+                    </header>
+                    <p class="entry">{{ post.body | truncate(150) }}</p>
+                </article>
+            {% endfor %}
+
+            {% if posts|length < 0 %}
+                <article>
+                    0 Posts
+                </article>
+            {% endif %}
+
+        </form>
+    </div>
+{% endblock %}

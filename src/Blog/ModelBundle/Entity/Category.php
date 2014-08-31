@@ -4,6 +4,7 @@ namespace Blog\ModelBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Category
@@ -40,9 +41,17 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
      */
     private $posts;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"}, unique=false)
+     * @ORM\Column(length=255)
+     */
+    private $slug;
 
 
     public function __construct()
@@ -139,5 +148,37 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $posts
+     */
+    public function setPosts($posts)
+    {
+        $this->posts = $posts;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

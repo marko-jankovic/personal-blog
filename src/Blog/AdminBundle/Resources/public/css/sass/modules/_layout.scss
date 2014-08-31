@@ -217,8 +217,7 @@ a {
 #users .content,
 #category .content,
 #settings .content,
-#comments .content,
-#categories .content {
+#comments .content {
 
   ul {
     padding: 12px 15px;
@@ -256,6 +255,7 @@ a {
 }
 
 #show-posts,
+#category-posts,
 #show-comments {
 
   h3 {
@@ -300,4 +300,13 @@ a {
           }
       }
   }
+}
+
+#edit-create-post {
+    margin: 30px 70px;
+
+    textarea {
+        margin: 15px 0;
+        height: 300px;
+    }
 }

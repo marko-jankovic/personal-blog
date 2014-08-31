@@ -109,6 +109,21 @@ class PostController extends Controller
         );
     }
 
+    /**
+     * @Template()
+     */
+    public function categoryAction($slug) {
+
+        $category = $this->getCategoryManager()->findBySlug($slug);
+        $posts  = $category->getPosts();
+
+        return array(
+            'posts'     => $posts,
+            'category'  => $category,
+            'actionName'=> 'category-posts'
+        );
+    }
+
     public function deleteSelectedAction(Request $request) {
 
         $redirect = $this->redirect($this->generateUrl('admin_post'));
@@ -203,6 +218,16 @@ class PostController extends Controller
     private function getPostManager()
     {
         return $this->get('postManager');
+    }
+
+    /**
+     * Get Category manager
+     *
+     * @return CategoryManager
+     */
+    private function getCategoryManager()
+    {
+        return $this->get('categoryManager');
     }
 
 }

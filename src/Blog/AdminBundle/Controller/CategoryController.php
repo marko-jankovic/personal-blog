@@ -15,7 +15,7 @@ class CategoryController extends Controller
 
 
     /**
-     * @Template("AdminBundle:Category:index.html.twig")
+     * @Template("")
      */
     public function indexAction()
     {
@@ -24,7 +24,7 @@ class CategoryController extends Controller
                       ->findAll();
 
         return array(
-            'actionName' => 'categories',
+            'actionName' => 'category',
             'categories' => $categories
         );
     }

@@ -35,7 +35,7 @@ class AuthorController extends Controller{
             );
 
         if ($author === null) {
-            throw $this->createNotFoundException('Post was not found!');
+            throw $this->createNotFoundException('Author was not found!');
         }
 
         return array(
