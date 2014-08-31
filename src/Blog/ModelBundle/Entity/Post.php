@@ -70,6 +70,14 @@ class Post extends TimeStamp
     private $user;
 
     /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
+     */
+    private $category;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"remove"})
