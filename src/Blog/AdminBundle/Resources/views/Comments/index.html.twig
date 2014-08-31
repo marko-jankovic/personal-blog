@@ -3,7 +3,6 @@
 {% block content %}
     <div class="content">
         <h2>Comments</h2>
-        <a href="{{ path('admin_post_create') }}" class="button-add top-btn">Create Post</a>
 
         <form name="delete-comments" method="post" action="{{ path('admin_comments_delete') }}" novalidate>
             {% for comment in comments %}
