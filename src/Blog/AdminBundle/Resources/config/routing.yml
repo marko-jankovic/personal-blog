@@ -68,6 +68,10 @@ admin_post_delete:
     pattern: /admin/post/delete/{id}
     defaults: { _controller: AdminBundle:Post:delete }
 
+admin_post_delete_selected:
+    pattern: /admin/post/deleteSelected
+    defaults: { _controller: AdminBundle:Post:deleteSelected }
+
 admin_post_edit:
     pattern: /admin/post/edit/{id}
     defaults: { _controller: AdminBundle:Post:edit }

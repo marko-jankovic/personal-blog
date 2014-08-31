@@ -5,8 +5,10 @@
         <h2>All Posts</h2>
         <a href="{{ path('admin_post_create') }}" class="button-add top-btn">Create Post</a>
 
+        <form name="delete-posts" method="post" action="{{ path('admin_post_delete_selected') }}" novalidate>
         {% for post in posts %}
             <article class="post">
+                <input type="checkbox" value="{{ post.id }}" name="posts[]">
                 <header>
                     <h3>
                         <a href="{{ path('admin_post_show', {'slug': post.slug }) }}">{{ post.title }}</a>
@@ -19,5 +21,20 @@
                 <p class="entry">{{ post.body | truncate(150) }}</p>
             </article>
         {% endfor %}
+
+        {% if posts|length > 0 %}
+            <select name="bulk-action">
+                <option value="">Bulk Action</option>
+                <option value="true">Delete</option>
+            </select>
+
+            <input type="submit" class="button-add" name="delete-posts" value="Apply"/>
+        {% else %}
+            <article>
+                0 Posts
+            </article>
+        {% endif %}
+
+        </form>
     </div>
 {% endblock %}

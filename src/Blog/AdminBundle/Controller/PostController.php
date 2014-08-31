@@ -108,6 +108,36 @@ class PostController extends Controller
         );
     }
 
+    public function deleteSelectedAction(Request $request) {
+
+        $redirect = $this->redirect($this->generateUrl('admin_post'));
+
+        if ($request->isMethod('POST')) {
+
+            if($request->get('bulk-action') && $request->get('delete-posts')) {
+
+                $selectedPosts = $request->get('posts');
+
+                $manager = $this->getDoctrine()->getManager();
+                $posts   = $this->getPostManager()
+                                ->findByList($selectedPosts);
+
+                foreach ($posts as $post) {
+                    $manager->remove($post);
+                    $manager->flush();
+                }
+
+                return $redirect;
+            }
+            else {
+                return $redirect;
+            }
+        }
+        else {
+            return $redirect;
+        }
+    }
+
     public function deleteAction($id)
     {
 

@@ -103,6 +103,33 @@ class PostManager
     }
 
     /**
+     * @param $selectedPosts
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return array $posts
+     */
+    public function findByList($selectedPosts) {
+
+        $posts = [];
+
+        foreach($selectedPosts as $key => $value) {
+
+            $post = $this->em->getRepository('ModelBundle:Post')->findOneBy(array(
+                'id' => $value
+            ));
+
+            if (null === $post) {
+                throw new NotFoundHttpException('Post was not found');
+            }
+
+            array_push($posts, $post);
+        }
+
+        return $posts;
+    }
+
+    /**
      * Create and validate a new comment
      *
      * @param Post    $post
