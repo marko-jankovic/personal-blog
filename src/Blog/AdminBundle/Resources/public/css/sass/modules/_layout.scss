@@ -254,7 +254,8 @@ a {
   margin: 0 10px;
 }
 
-#showPosts {
+#show-posts,
+#show-comments {
 
   h3 {
       @include font-size(16px);

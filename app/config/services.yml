@@ -2,6 +2,7 @@ parameters:
     author_manager.class: Blog\ModelBundle\Services\AuthorManager
     post_manager.class:   Blog\ModelBundle\Services\PostManager
     user_manager.class:   Blog\ModelBundle\Services\UserManager
+    comment_manager.class:   Blog\ModelBundle\Services\CommentManager
     logout_handler.class: Blog\ModelBundle\Services\LogoutHandler
 
     is_active.class:     Blog\ModelBundle\Twig\Helpers\isActive
@@ -30,6 +31,11 @@ services:
 
     user_manager:
             class: %user_manager.class%
+            arguments:
+                - @doctrine.orm.entity_manager
+
+    comment_manager:
+            class: %comment_manager.class%
             arguments:
                 - @doctrine.orm.entity_manager
 

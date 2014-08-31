@@ -40,7 +40,7 @@ class PostController extends Controller
 
         return array(
             'posts'         => $posts,
-            'actionName'    => "showPosts"
+            'actionName'    => "show-posts"
         );
     }
 
@@ -63,7 +63,7 @@ class PostController extends Controller
 
         return array(
             'post'      => $post,
-            'actionName' => 'showPosts',
+            'actionName' => 'show-posts',
             'form'       => $form->createView()
         );
     }
