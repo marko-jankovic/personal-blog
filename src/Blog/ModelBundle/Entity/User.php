@@ -447,7 +447,7 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * @param \Blog\ModelBundle\Entity\ArrayCollection $details
+     * @param $details
      */
     public function setDetails($details)
     {
@@ -478,6 +478,27 @@ class User implements AdvancedUserInterface, Serializable
         return $this->userDeleted;
     }
 
+    /**
+     * Add comments
+     *
+     * @param Comment $comments
+     *
+     * @return Comment
+     */
+    public function addComment(Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Get comments
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 
     public function getRoles()
     {
@@ -485,19 +506,17 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
-     */
-    public function getAllRoles()
-    {
-    }
-
-    /**
      * Add userRoles
      *
-     * @param \Blog\ModelBundle\Entity\Role $userRoles
+     * @param $userRoles
+     *
+     * @return Role
      */
-    public function setRole(Role $userRoles)
+    public function addRole(Role $userRoles)
     {
         $this->userRoles[] = $userRoles;
+
+        return $this;
     }
 
     /**
@@ -509,20 +528,10 @@ class User implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Add comments
-     *
-     * @param Comment $comments
+     * Set userRoles
      */
-    public function addComment(Comment $comments)
+    public function setUserRoles($userRoles)
     {
-        $this->comments[] = $comments;
-    }
-
-    /**
-     * Get comments
-     */
-    public function getComments()
-    {
-        return $this->comments;
+        $this->userRoles = $userRoles;
     }
 }

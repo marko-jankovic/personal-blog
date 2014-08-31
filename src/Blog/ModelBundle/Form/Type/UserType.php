@@ -11,12 +11,38 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class UserType extends AbstractType
 {
+
+    private $isGranted;
+
+    public function __construct($isGranted)
+    {
+        $this->isGranted = $isGranted;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        if ($this->isGranted) {
+
+            $builder->add('userRoles', 'entity', array(
+                'property'    => 'name',
+                'class'       => 'ModelBundle:Role',
+                'required'   => false,
+                'empty_value' => 'Add Role'
+            ));
+        }
+
         $builder
             ->add('email', 'email')
-            ->add('plainPassword', 'password')
-            ->add('confirmPassword', 'password');
+            ->add('plainPassword', 'password', array(
+                'required' => false,
+                'attr'     => array("autocomplete" => "off")
+            ))
+            ->add('confirmPassword', 'password', array(
+                'required' => false,
+                'attr'     => array("autocomplete" => "off")
+            ));
+
     }
 
     /**

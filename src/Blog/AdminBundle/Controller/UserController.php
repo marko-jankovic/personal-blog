@@ -50,7 +50,7 @@ class UserController extends Controller {
     private function isCurrentUser($currentId)
     {
 
-        $isGranted = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        $isGranted = $this->isGranted('ROLE_ADMIN');
         $userId = (string)$this->getUser()->getId();
 
         if(!$isGranted && $currentId !== $userId) {
@@ -85,13 +85,11 @@ class UserController extends Controller {
 
         $errors = array();
 
-        $user = $this->getUserManager()
-                     ->findOneBy(array('id' => $id));
+        $user = $this->getUserManager()->findOneBy(array('id' => $id));
+        $roles = $this->getUserManager()->getAllRoles();
+        $userRoles = $user->getRoles();
 
-        $roles = $this->getUserManager()
-                        ->getAllRoles();
-
-        $form = $this->createForm(new UserType(), $user);
+        $form = $this->createForm(new UserType($this->isGranted('ROLE_ADMIN')), $user);
 
         if ($request->isMethod('POST')) {
 
@@ -106,6 +104,13 @@ class UserController extends Controller {
                 $user->setPassword($this->encodePassword($user, $data->getPlainPassword()));
                 $user->setEmail($data->getEmail());
 
+                if ($this->isGranted('ROLE_ADMIN') && $data->getUserRoles() !== null) {
+
+                    // update current user roles with selected
+                    // setUserRoles expect array
+                    $userRoles = array_merge($userRoles, array($data->getUserRoles()));
+                }
+                $user->setUserRoles($userRoles);
 
                 $manager->persist($user);
                 $manager->flush();
@@ -154,7 +159,7 @@ class UserController extends Controller {
 
         // when current user is ADMIN
         // redirect to user list after deleting
-        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+        if ($this->isGranted('ROLE_ADMIN')) {
 
             $manager->remove($user);
             $manager->flush();
@@ -209,5 +214,9 @@ class UserController extends Controller {
 
 
         return $encoder->encodePassword($plainPassword, $user->getSalt());
+    }
+
+    public function isGranted($type) {
+        return $this->get('security.context')->isGranted($type);
     }
 } 
