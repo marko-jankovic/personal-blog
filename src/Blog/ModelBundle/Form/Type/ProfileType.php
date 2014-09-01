@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Blog\ModelBundle\Form\Type\Image;
+
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -17,6 +19,10 @@ class ProfileType extends AbstractType
             ->add('twitter', 'text')
             ->add('linkedin', 'text');
 
+
+        $builder->add('avatar', 'collection', array(
+            'type'         => new ImageType()
+        ));
     }
 
     /**

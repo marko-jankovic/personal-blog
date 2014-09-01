@@ -26,9 +26,9 @@ class UserDetails extends TimeStamp
     private $id;
 
     /**
-     * @var string
+     * @var ArrayCollection
      *
-     * @ORM\Column(name="avatar", type="string", length=150, nullable=true)
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="details")
      */
     private $avatar;
 
@@ -239,5 +239,29 @@ class UserDetails extends TimeStamp
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Add images
+     *
+     * @param Image $avatar
+     *
+     * @return this
+     */
+    public function addAvatar(Image $avatar)
+    {
+        $this->avatar[] = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Remove avatar
+     *
+     * @param Image $avatar
+     */
+    public function removeAvatar(Image $avatar)
+    {
+        $this->images->removeElement($avatar);
     }
 }
